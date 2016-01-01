@@ -8,13 +8,13 @@ class HashTable {
 public:
 
 	// m -> mida *inicial* de la taula de hash
-	HashTable(int m) {
+	HashTable(unsigned int m) {
 		_m = m;
 		_elements = 0;
 		table = vector<list<int> > (_m, list<int>());
 	}
 
-	bool find(int value) {
+	bool find(unsigned int value) {
 		int hash = h(value);
 		list<int> *entries = &table[hash];
 		for (int& e : *entries) {
@@ -23,7 +23,7 @@ public:
 		return false;
 	}
 
-	void insert(int value) {
+	void insert(unsigned int value) {
 		if (not find(value)) {
 			int hash = h(value);
 			table[hash].push_back(value);
