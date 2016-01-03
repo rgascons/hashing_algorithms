@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include "hash_functions.h"
 using namespace std;
 
 
@@ -39,10 +40,8 @@ public:
 		return _elements/_m;
 	}
 
-	// Post: 0 <= h(k) < table.size()
-	// Dumb hash function.
 	int h(unsigned int k) {
-		return k%_m;
+		return division_method(k, _m);
 	}
 
 private:
