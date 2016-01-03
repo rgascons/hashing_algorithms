@@ -14,19 +14,19 @@ public:
 		table = vector<list<int> > (_m, list<int>());
 	}
 
-	bool find(unsigned int value) {
-		int hash = h(value);
+	bool find(unsigned int k) {
+		int hash = h(k);
 		list<int> *entries = &table[hash];
 		for (int& e : *entries) {
-			if (e == value) return true;
+			if (e == k) return true;
 		}
 		return false;
 	}
 
-	void insert(unsigned int value) {
-		if (not find(value)) {
-			int hash = h(value);
-			table[hash].push_back(value);
+	void insert(unsigned int k) {
+		if (not find(k)) {
+			int hash = h(k);
+			table[hash].push_back(k);
 			++_elements;
 		}
 	}
@@ -35,10 +35,14 @@ public:
 		return _elements;
 	}
 
+	int load_factor() {
+		return _elements/_m;
+	}
+
 	// Post: 0 <= h(k) < table.size()
 	// Dumb hash function.
-	int h(unsigned int value) {
-		return value%table.size();
+	int h(unsigned int k) {
+		return k%_m;
 	}
 
 private:
