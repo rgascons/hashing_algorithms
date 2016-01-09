@@ -37,15 +37,29 @@ public:
 					}
 				}
 			}
-			resize();
+			rehash();
 			insert(k);
 		}
 	}
 
-	void resize() {
-		t1.resize(m1, 0);
-		t1.resize(m2, 0);
+	void rehash() {
+		vector<unsigned int> aux1 = t1;
+		vector<unsigned int> aux2 = t2;
 		m1 = m2 = m1*2;
+		t1 = vector<unsigned int> (m1, 0);
+		t2 = vector<unsigned int> (m2, 0);
+		_elements = 0;
+		max_loop = m1*2;
+		for (int i = 0; i < aux1.size(); ++i) {
+			if (aux1[i] != 0) {
+				insert(aux1[i]);
+			}
+		}
+		for (int i = 0; i < aux2.size(); ++i) {
+			if (aux2[i] != 0) {
+				insert(aux2[i]);
+			}
+		}
 	}
 
 	int size() {
