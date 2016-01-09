@@ -26,7 +26,7 @@ public:
 		for (int i = 0; i < word.length(); ++i) {
 			int digit = (int)word[i] - (int)'0';
 			if (current -> child[digit] == NULL) {
-				current ->child[digit] = new Node();
+				current -> child[digit] = new Node();
 			}
 			current -> child[digit] -> prefix_count++;
 			current = current -> child[digit];
@@ -39,7 +39,6 @@ public:
 		Node *current = head;
 		for (int i = 0; i < word.length(); ++i) {
 			int digit = (int)word[i] - (int)'0';
-			cout << digit << endl;
 			if (current -> child[digit] == NULL) {
 				return false;
 			}
