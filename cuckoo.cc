@@ -9,8 +9,8 @@ public:
 		m1 = m2 = m;
 		max_loop = m*2;
 		_elements = 0;
-		t1 = vector<int> (m1, -1);
-		t2 = vector<int> (m2, -1);
+		t1 = vector<unsigned int> (m1, 0);
+		t2 = vector<unsigned int> (m2, 0);
 	}
 
 	bool find (unsigned int k) {
@@ -25,12 +25,12 @@ public:
 		if (not find(k)) {
 			for (int it = 0; it < max_loop; ++it) {
 				int hash = h1(k);
-				if (t1[hash] == -1) {t1[hash] = k; ++_elements; return;}
+				if (t1[hash] == 0) {t1[hash] = k; ++_elements; return;}
 				else {
 					int e = t1[hash];
 					t1[hash] = k;
 					hash = h2(e);
-					if (t2[hash] == -1) {t2[hash] = e; ++_elements; return;}
+					if (t2[hash] == 0) {t2[hash] = e; ++_elements; return;}
 					else {
 						k = t2[hash];
 						t2[hash] = e;
@@ -43,8 +43,8 @@ public:
 	}
 
 	void resize() {
-		t1.resize(m1, -1);
-		t1.resize(m2, -1);
+		t1.resize(m1, 0);
+		t1.resize(m2, 0);
 		m1 = m2 = m1*2;
 	}
 
@@ -67,8 +67,8 @@ private:
 	int _elements;
 	int max_loop;
 
-	vector<int> t1;
-	vector<int> t2;
+	vector<unsigned int> t1;
+	vector<unsigned int> t2;
 
 
 };
