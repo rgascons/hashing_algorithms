@@ -10,29 +10,24 @@ class BloomFilter {
 // the length of the Bloom table must grow linearly with n.
 private:
 	
-	int method;
+	int method1;
+	int method2;
 
 public:
 	
-	// Inicialitzar T segons els parametres donats
-	// BloomFilter(int m, int k) {
-		// m -> mida de la taula de bloom (nombre de bits)
-		// k -> quantitat de funcions de hash a usar
-		// 		(entre 1 i 3-4-les que siguin). 
-		//  	S'hauria de poder triar quines usar?
-
-	// }
-
-	BloomFilter(int f) {
-		this->method = f;
+	BloomFilter(int f1, int f2) {
+		this->method1 = f1;
+		this->method2 = f2;
 	}
 
 	bool find(unsigned int k) {
-		return T[h(method, k, T.size())];
+		return T[h(method1, k, T.size())] 
+				and T[h(method2, k, T.size())];
 	}
 
 	void insert(unsigned int k) {
-		T.set(h(method, k, T.size()));
+		T.set(h(method1, k, T.size()));
+		T.set(h(method2, k, T.size()));
 	}
 
 	// Post: 0 <= h(k) < T.size()
@@ -46,11 +41,11 @@ public:
 	}
 
 private:
-	bitset<31> T;
+	bitset<200> T;
 };
 
 int main() {
-	BloomFilter bf(DIVISION_METHOD);
+	BloomFilter bf(DIVISION_KNUTH, MULT_METHOD);
 	bf.print();
 	bf.insert(123456);
 	bf.print();
