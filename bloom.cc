@@ -1,5 +1,6 @@
 #include <iostream>
 #include <bitset>
+#include "hash_functions.cc"
 using namespace std;
 
 class BloomFilter {
@@ -7,6 +8,9 @@ class BloomFilter {
 // Atenció:
 // Therefore, to maintain a fixed false positive probability, 
 // the length of the Bloom table must grow linearly with n.
+private:
+	
+	int method;
 
 public:
 	
@@ -19,19 +23,23 @@ public:
 
 	// }
 
+	BloomFilter(int f) {
+		this->method = f;
+	}
+
 	bool find(unsigned int k) {
-		return T[h(k)];
+		return T[h(method, k, T.size())];
 	}
 
 	void insert(unsigned int k) {
-		T.set(h(k));
+		T.set(h(method, k, T.size()));
 	}
 
 	// Post: 0 <= h(k) < T.size()
 	// Dumb hash function.
-	int h(unsigned int k) {
-		return k%T.size();
-	}
+	//int h(unsigned int k) {
+	//	return k%T.size();
+	//}
 
 	void print() {
 		cout << T << endl;
@@ -42,7 +50,7 @@ private:
 };
 
 int main() {
-	BloomFilter bf;
+	BloomFilter bf(DIVISION_METHOD);
 	bf.print();
 	bf.insert(123456);
 	bf.print();
