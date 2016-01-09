@@ -9,10 +9,11 @@ class HashTable {
 public:
 
 	// m -> mida *inicial* de la taula de hash
-	HashTable(unsigned int m) {
+	HashTable(unsigned int m, double max_load) {
 		_m = m;
 		_elements = 0;
-		table = vector<list<unsigned int> > (_m, list<unsigned int>());
+		_max_load = max_load;
+		table = vector<list<unsigned int>> (_m, list<unsigned int>());
 	}
 
 	bool find(unsigned int k) {
@@ -29,6 +30,19 @@ public:
 			int hash = h(k);
 			table[hash].push_back(k);
 			++_elements;
+			if (load_factor() > _max_load) rehash();
+		}
+	}
+
+	void rehash() {
+		vector<list<unsigned int>> aux = table;
+		_m *= 2;
+		_elements = 0;
+		table = vector<list<unsigned int>> (_m, list<unsigned int>());
+		for (auto& entry_list : aux) {
+			for (unsigned int& e : entry_list) {
+				insert(e);
+			}
 		}
 	}
 
@@ -36,8 +50,8 @@ public:
 		return _elements;
 	}
 
-	int load_factor() {
-		return _elements/_m;
+	double load_factor() {
+		return ((double)_elements)/((double)_m);
 	}
 
 	int h(unsigned int k) {
@@ -47,11 +61,11 @@ public:
 private:
 	int _m;
 	int _elements;
-	vector<list<int> > table;
+	vector<list<unsigned int> > table;
 };
 
 int main() {
-	HashTable ht(10);
+	HashTable ht(10, 0.75);
 	ht.insert(123456);
 	ht.insert(123556);
 	ht.insert(4321);	
