@@ -5,31 +5,27 @@ CUCKOO=cuckoo
 TRIE=trie
 
 all:
-	g++ -c -o hash_functions.o hash_functions.c
 	g++ -c -o hash_table.o hash_table.cc -std=c++11
 	g++ -c -o bloom.o bloom.cc -std=c++11
 	g++ -c -o cuckoo.o cuckoo.cc -std=c++11
 	g++ -c -o trie.o trie.cc -std=c++11
-	g++ -o $(HASH) hash_table.o hash_functions.o
-	g++ -o $(BLOOM) bloom.o hash_functions.o
+	g++ -o $(HASH) hash_table.o
+	g++ -o $(BLOOM) bloom.o
 	g++ -o $(BINARY) binary_search.cc -std=c++11
-	g++ -o $(CUCKOO) cuckoo.o hash_functions.o
+	g++ -o $(CUCKOO) cuckoo.o
 	g++ -o $(TRIE) trie.o
 
 hash:
-	g++ -c -o hash_functions.o hash_functions.c
 	g++ -c -o hash_table.o hash_table.cc -std=c++11
-	g++ -o $(HASH) hash_table.o hash_functions.o
+	g++ -o $(HASH) hash_table.o
 
 bloom:
-	g++ -c -o hash_functions.o hash_functions.c
 	g++ -c -o bloom.o bloom.cc -std=c++11
-	g++ -o $(BLOOM) bloom.o hash_functions.o
+	g++ -o $(BLOOM) bloom.o
 
 cuckoo:
-	g++ -c -o hash_functions.o hash_functions.c
 	g++ -c -o cuckoo.o cuckoo.cc -std=c++11
-	g++ -o $(CUCKOO) cuckoo.o hash_functions.o
+	g++ -o $(CUCKOO) cuckoo.o
 
 trie:
 	g++ -c -o trie.o trie.cc -std=c++11

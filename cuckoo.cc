@@ -1,22 +1,25 @@
 #include <iostream>
 #include <vector>
 #include <math.h>
+#include "hash_functions.cc"
 using namespace std;
 
 class CuckooHash {
 public:
-	CuckooHash(unsigned int m) {
+	CuckooHash(unsigned int m, int f1, int f2) {
 		m1 = m2 = m;
 		max_loop = m*2;
 		_elements = 0;
+		method1 = f1;
+		method2 = f2;
 		t1 = vector<unsigned int> (m1, 0);
 		t2 = vector<unsigned int> (m2, 0);
 	}
 
 	bool find (unsigned int k) {
-		int hash1 = h1(k);
+		int hash1 = h(method1, k, m1);
 		if (t1[hash1] == k) return true;
-		int hash2 = h2(k);
+		int hash2 = h(method2, k, m2);
 		if (t2[hash2] == k) return true;
 		return false;
 	}
@@ -24,12 +27,12 @@ public:
 	void insert(unsigned int k) {
 		if (not find(k)) {
 			for (int it = 0; it < max_loop; ++it) {
-				int hash = h1(k);
+				int hash = h(method1, k, m1);
 				if (t1[hash] == 0) {t1[hash] = k; ++_elements; return;}
 				else {
 					int e = t1[hash];
 					t1[hash] = k;
-					hash = h2(e);
+					hash = h(method2, e, m2);
 					if (t2[hash] == 0) {t2[hash] = e; ++_elements; return;}
 					else {
 						k = t2[hash];
@@ -66,20 +69,13 @@ public:
 		return _elements;
 	}
 
-	int h1(unsigned int k) {
-		return k%m1;
-	}
-
-	int h2(unsigned int k) {
-		double d = ((double)k)/((double)m2);
-		return ((int)ceil(d))%m2;
-	}
-
 private:
 	int m1;
 	int m2;
 	int _elements;
 	int max_loop;
+	int method1;
+	int method2;
 
 	vector<unsigned int> t1;
 	vector<unsigned int> t2;
@@ -88,7 +84,7 @@ private:
 };
 
 int main() {
-	CuckooHash c(10);
+	CuckooHash c(10, DIVISION_KNUTH, MULT_METHOD);
 	c.insert(5);
 	cout << c.find(5) << endl;
 	cout << c.find(10) << endl;

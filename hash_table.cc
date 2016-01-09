@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include "hash_functions.h"
+#include "hash_functions.cc"
 using namespace std;
 
 
@@ -9,15 +9,16 @@ class HashTable {
 public:
 
 	// m -> mida *inicial* de la taula de hash
-	HashTable(unsigned int m, double max_load) {
+	HashTable(unsigned int m, double max_load, int f) {
 		_m = m;
 		_elements = 0;
 		_max_load = max_load;
+		method = f;
 		table = vector<list<unsigned int>> (_m, list<unsigned int>());
 	}
 
 	bool find(unsigned int k) {
-		int hash = h(k);
+		int hash = h(method, k, _m);
 		list<unsigned int> *entries = &table[hash];
 		for (unsigned int& e : *entries) {
 			if (e == k) return true;
@@ -27,7 +28,7 @@ public:
 
 	void insert(unsigned int k) {
 		if (not find(k)) {
-			int hash = h(k);
+			int hash = h(method, k, _m);
 			table[hash].push_back(k);
 			++_elements;
 			if (load_factor() > _max_load) rehash();
@@ -54,18 +55,16 @@ public:
 		return ((double)_elements)/((double)_m);
 	}
 
-	int h(unsigned int k) {
-		return division_method(k, _m);
-	}
-
 private:
 	int _m;
 	int _elements;
+	int method;
+	double _max_load;
 	vector<list<unsigned int> > table;
 };
 
 int main() {
-	HashTable ht(10, 0.75);
+	HashTable ht(10, 0.75, DIVISION_METHOD);
 	ht.insert(123456);
 	ht.insert(123556);
 	ht.insert(4321);	
