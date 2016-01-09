@@ -15,7 +15,9 @@ private:
 
 public:
 	
-	BloomFilter(int f1, int f2) {
+	BloomFilter(int f1, int f2, const int m) {
+		const int a = 10000;
+		T = bitset<a>();
 		this->method1 = f1;
 		this->method2 = f2;
 	}
@@ -41,11 +43,12 @@ public:
 	}
 
 private:
-	bitset<200> T;
+	bitset<10000> T;
 };
 
 int main() {
-	BloomFilter bf(DIVISION_KNUTH, MULT_METHOD);
+	const int m = 1000000;
+	BloomFilter bf(DIVISION_KNUTH, MULT_METHOD, m);
 	bf.print();
 	bf.insert(123456);
 	bf.print();
