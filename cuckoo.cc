@@ -37,8 +37,15 @@ public:
 					}
 				}
 			}
-			cout << "Upper bound surpassed" << endl;
+			resize();
+			insert(k);
 		}
+	}
+
+	void resize() {
+		t1.resize(m1, -1);
+		t1.resize(m2, -1);
+		m1 = m2 = m1*2;
 	}
 
 	int size() {
@@ -85,5 +92,5 @@ int main() {
 	c.insert(12);
 	c.insert(14);
 	c.insert(16);
-	cout << c.size() << endl; //expected = 9
+	cout << c.size() << endl; //expected = 11
 }
