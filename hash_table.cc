@@ -12,13 +12,13 @@ public:
 	HashTable(unsigned int m) {
 		_m = m;
 		_elements = 0;
-		table = vector<list<int> > (_m, list<int>());
+		table = vector<list<unsigned int> > (_m, list<unsigned int>());
 	}
 
 	bool find(unsigned int k) {
 		int hash = h(k);
-		list<int> *entries = &table[hash];
-		for (int& e : *entries) {
+		list<unsigned int> *entries = &table[hash];
+		for (unsigned int& e : *entries) {
 			if (e == k) return true;
 		}
 		return false;
