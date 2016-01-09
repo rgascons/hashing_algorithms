@@ -15,7 +15,7 @@ def generate_random_set(words, chance_old_words):
 	f.truncate()
 	for i in range(0, numbers):
 		randnum = random.randint(0, 100)
-		if randnum <= chance_old_words:
+		if randnum < chance_old_words:
 			print(random.sample(words,1)[0], file=f)
 		else:
 			print(random.randint(1, UINT_MAX), file=f)
