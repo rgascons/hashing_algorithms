@@ -22,9 +22,8 @@ int knuthDivisionMethodHash(unsigned int k, unsigned int m) {
 // It works with almost any A, but Knuth recommends that A must be the golden ratio
 int multiplicationMethodHash(unsigned int k, unsigned int m) {
 	double A = GOLDEN_RATIO;
-	double s = k * A;
-	double x = s - ((int)s);
-	return floor(m*x);
+	double s = fmod(k * A, 1.0);
+	return floor(m*s);
 }
 
 int h(int f, unsigned int k, unsigned int m) {

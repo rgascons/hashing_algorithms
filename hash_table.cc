@@ -2,6 +2,8 @@
 #include <vector>
 #include <list>
 #include <ctime>
+#include <fstream>
+#include <cstdlib>
 #include "hash_functions.cc"
 using namespace std;
 
@@ -18,6 +20,7 @@ public:
 		numFoundElements = 0;
 		numNotFoundElements = 0;
 		numRehash = 0;
+		numCallsHashFunction = 0;
 		timeTotal = 0.0;
 		timeInsert = 0.0;
 		timeFind = 0.0;
@@ -31,6 +34,8 @@ public:
 		double t2 = (clock() - t1)/double(CLOCKS_PER_SEC);
 		timeTotal += t2;
 		timeFind += t2;
+		if (f) finish(1);
+		else finish(0);
 
 		return f;
 	}
@@ -72,9 +77,11 @@ public:
 		cout << "find(k): number of unsuccessful queries:\t" << numNotFoundElements << endl;
 		cout << "insert(k): average insertion time:\t" << double(timeTotal)/(_elements) << endl;
 		cout << "insert(k): total insertion time:\t" <<  timeInsert << endl;
+		cout << "insert(k): number of elements:\t" << _elements << endl;
 		cout << "rehash(): number of rehashes:\t" << numRehash << endl;
 		cout << "rehash(): average time of each rehash:\t" << double(rehashTime)/(numRehash) << endl;
 		cout << "rehash(): average time between each rehash:\t" << double(timeTotal-rehashTime)/(numRehash) << endl;
+		cout << "		 : number of calls to hash:\t" << numCallsHashFunction << endl;
 	}
 
 private:
@@ -87,6 +94,7 @@ private:
 	int numFoundElements;
 	int numNotFoundElements;
 	int numRehash;
+	int numCallsHashFunction;
 
 	double timeTotal;
 	double timeInsert;
@@ -94,21 +102,19 @@ private:
 	double rehashTime;
 
 	bool find_hash(unsigned int k) {
-		int hash = h(method, k, _m);
+		int hash = h(method, k, _m); ++numCallsHashFunction;
 		list<unsigned int> *entries = &table[hash];
 		for (unsigned int& e : *entries) {
 			if (e == k) {
-				finish(1);
 				return true;
 			}
 		}
-		finish(0);
 		return false;
 	}
 
 	void insert_hash(unsigned int k) {
 		if (not find_hash(k)) {
-			int hash = h(method, k, _m);
+			int hash = h(method, k, _m); ++numCallsHashFunction;
 			table[hash].push_back(k);
 			++_elements;
 			if (load_factor() > _max_load) {
@@ -130,13 +136,28 @@ private:
 	}
 };
 
-int main() {
-	HashTable ht(10, 0.75, DIVISION_METHOD);
-	ht.insert(123456);
-	ht.insert(123556);
-	ht.insert(4321);	
-	cout << ht.find(4321) << endl;
-	cout << ht.find(4322) << endl;
-	cout << ht.find(123456) << endl;
-	cout << ht.size() << endl; // expected: 3
+int main(int argc, char* argv[]) {
+	int table_size;
+	float load_factor;
+	string dict_file, query_file;
+	if (argc != 5) {
+		cout << "Usage: table_size, load_factor, dict_file, query_file" << endl;
+		return 0;
+	} else {
+		table_size = atoi(argv[1]);
+		load_factor = atof(argv[2]);
+		dict_file = argv[3];
+		query_file = argv[4];
+	}
+	HashTable ht(table_size, double(load_factor), DIVISION_METHOD);
+	fstream dict(dict_file, ios_base::in);
+    unsigned int a;
+    while (dict >> a) {
+    	ht.insert(a);
+	}
+	fstream query(query_file, ios_base::in);
+	while (query >> a) {
+		ht.find(a);
+	}
+	ht.printResults();
 }

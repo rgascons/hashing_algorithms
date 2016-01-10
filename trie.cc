@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <fstream>
 using namespace std;
 
 #define DIGITS_SIZE 10
@@ -18,6 +19,7 @@ class Trie {
 public:
 	Trie() {
 		head = new Node();
+		_elements = 0;
 		numFoundElements = 0;
 		numNotFoundElements = 0;
 		timeTotal = 0.0;
@@ -51,6 +53,7 @@ public:
 		cout << "find(k): number of unsuccessful queries:\t" << numNotFoundElements << endl;
 		cout << "insert(k): average insertion time:\t" << double(timeTotal)/(_elements) << endl;
 		cout << "insert(k): total insertion time:\t" <<  timeInsert << endl;
+		cout << "insert(k): number of elements:\t" << _elements << endl;
 	}
 
 private:
@@ -93,17 +96,30 @@ private:
 			}
 			current = current -> child[digit];
 		}
-		++numFoundElements;
+		if (current -> is_end) ++numFoundElements;
+		else ++numNotFoundElements;
 		return current -> is_end;
 	}
 };
 
-int main() {
+int main(int argc, char* argv[]) {
+	string dict_file, query_file;
+	if (argc != 3) {
+		cout << "Usage: dict_file, query_file" << endl;
+		return 0;
+	} else {
+		dict_file = argv[1];
+		query_file = argv[2];
+	}
 	Trie t;
-	t.insert(1234);
-	cout << t.find(1234) << endl;
-	cout << t.find(4321) << endl;
-	t.insert(123456);
-	cout << t.find(123456) << endl;
-	cout << t.find(1234567) << endl;
+	fstream dict(dict_file, ios_base::in);
+    unsigned int a;
+    while (dict >> a) {
+    	t.insert(a);
+	}
+	fstream query(query_file, ios_base::in);
+	while (query >> a) {
+		t.find(a);
+	}
+	t.printResults();
 }
