@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <ctime>
+#include <fstream>
 using namespace std;
 
 class BinarySearch {
@@ -100,7 +101,7 @@ public:
 		this->timeTotal = 0.0;
 	}
 
-	void setDictionary(vector<unsigned int> v) {
+	void setDictionary(vector<unsigned int>& v) {
 		//sort(v.begin(), v.end());	// implement quick sort/radix sort?
 		numSortComparisons = 0;
 		quicksort(v);
@@ -137,15 +138,26 @@ public:
 	
 };
 
-int main() {
+int main(int argc, char* argv[]) {
+	string dict_file, query_file;
+	if (argc != 3) {
+		cout << "Usage: dict_file, query_file" << endl;
+		return 0;
+	} else {
+		dict_file = argv[1];
+		query_file = argv[2];
+	}
 	BinarySearch bs;
-	// vector<unsigned int> v = {5,7,10,12,15,20};
-	vector<unsigned int> v = {7,5,20,12,10,15};
+	vector<unsigned int> v;
+	fstream dict(dict_file, ios_base::in);
+    unsigned int a;
+    while (dict >> a) {
+    	v.push_back(a);
+	}
 	bs.setDictionary(v);
-	cout << bs.find(5) << ", " << bs.getNumKeyComparisons() << " comparisons" << endl;
-	cout << bs.find(12) << ", " << bs.getNumKeyComparisons() << " comparisons" << endl;
-	cout << bs.find(13) << ", " << bs.getNumKeyComparisons() << " comparisons" << endl;
-	cout << bs.find(20) << ", " << bs.getNumKeyComparisons() << " comparisons" << endl;
-
+	fstream query(query_file, ios_base::in);
+	while (query >> a) {
+		bs.find(a);
+	}
 	bs.printResults();
 }
