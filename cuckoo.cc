@@ -76,11 +76,11 @@ public:
 
 	void printResults() {
 		cout << endl << endl;
-		cout << "find(k): average search time:\t" <<  double(timeTotal)/(numFoundElements+numNotFoundElements) << endl;
+		cout << "find(k): average search time:\t" <<  double(timeFind)/(numFoundElements+numNotFoundElements) << endl;
 		cout << "find(k): total search time:\t" <<  timeFind << endl;
 		cout << "find(k): number of successful queries:\t" << numFoundElements << endl;
 		cout << "find(k): number of unsuccessful queries:\t" << numNotFoundElements << endl;
-		cout << "insert(k): average insertion time:\t" << double(timeTotal)/(_elements) << endl;
+		cout << "insert(k): average insertion time:\t" << double(timeInsert)/(_elements) << endl;
 		cout << "insert(k): total insertion time:\t" <<  timeInsert << endl;
 		cout << "insert(k): total number of bounces:\t" << numBounces << endl;
 		cout << "insert(k): number of elements:\t" << _elements << endl;
