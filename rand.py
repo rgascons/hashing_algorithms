@@ -23,15 +23,21 @@ def generate_random_set(words, chance_old_words):
 	
 
 if len(sys.argv) < 3:
-	sys.exit("Usage: enter how many numbers you want to generate and the name of the output file [and the change of appearance from the previous output and the file from a previous output]")
+	#sys.exit("Usage: enter how many numbers you want to generate and the name of the output file [and the change of appearance from the previous output and the file from a previous output]")
+	print("Usage:")
+	print("   Dictionary:\t" + sys.argv[0] + " output_file number_elements")
+	print("   Queries:\t" + sys.argv[0] + " dict_file output_file number_queries chance_of_belonging")
+	sys.exit()
 
-numbers = int(sys.argv[1])
-OUTPUT_FILE = sys.argv[2]
 
 if len(sys.argv) == 3:
+	OUTPUT_FILE = sys.argv[1]
+	numbers = int(sys.argv[2])
 	generate_random()
 elif len(sys.argv) == 5:
-	filename = sys.argv[3]
+	filename = sys.argv[1]
+	OUTPUT_FILE = sys.argv[2]
+	numbers = int(sys.argv[3])
 	chance_old_words = int(sys.argv[4])
 	words = list(line.strip() for line in open(filename))
 	generate_random_set(words, chance_old_words)
