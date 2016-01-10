@@ -1,9 +1,9 @@
 #include <iostream>
 #include <bitset>
-#include "hash_functions.cc"
 #include <ctime>
 #include <fstream>
 #include <cstdlib>
+#include "hash_functions.cc"
 using namespace std;
 
 class BloomFilter {
