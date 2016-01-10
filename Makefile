@@ -1,35 +1,22 @@
 HASH=hash_table
-BLOOM=bloom_filter
+BLOOM=bloom
 BINARY=binary_search
 CUCKOO=cuckoo
 TRIE=trie
 
-all:
-	g++ -c -o hash_table.o hash_table.cc -std=c++11
-	g++ -c -o bloom.o bloom.cc -std=c++11
-	g++ -c -o cuckoo.o cuckoo.cc -std=c++11
-	g++ -c -o trie.o trie.cc -std=c++11
-	g++ -o $(HASH) hash_table.o
-	g++ -o $(BLOOM) bloom.o
-	g++ -o $(BINARY) binary_search.cc -std=c++11
-	g++ -o $(CUCKOO) cuckoo.o
-	g++ -o $(TRIE) trie.o
+all: hash bloom cuckoo trie binary
 
 hash:
-	g++ -c -o hash_table.o hash_table.cc -std=c++11
-	g++ -o $(HASH) hash_table.o
+	g++ -o $(HASH) hash_table.cc -std=c++11
 
 bloom:
-	g++ -c -o bloom.o bloom.cc -std=c++11
-	g++ -o $(BLOOM) bloom.o
+	g++ -o $(BLOOM) bloom.cc -std=c++11
 
 cuckoo:
-	g++ -c -o cuckoo.o cuckoo.cc -std=c++11
-	g++ -o $(CUCKOO) cuckoo.o
+	g++ -o $(CUCKOO) cuckoo.cc -std=c++11
 
 trie:
-	g++ -c -o trie.o trie.cc -std=c++11
-	g++ -o $(TRIE) trie.o
+	g++ -o $(TRIE) trie.cc -std=c++11
 
 binary:
 	g++ -o $(BINARY) binary_search.cc -std=c++11
