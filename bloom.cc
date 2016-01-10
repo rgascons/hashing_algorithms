@@ -1,6 +1,9 @@
 #include <iostream>
 #include <bitset>
 #include "hash_functions.cc"
+#include <ctime>
+#include <fstream>
+#include <cstdlib>
 using namespace std;
 
 class BloomFilter {
@@ -76,13 +79,28 @@ private:
 	vector<bool> T;
 };
 
-int main() {
-	const int m = 1000000;
-	BloomFilter bf(DIVISION_KNUTH, MULT_METHOD, m);
-	bf.insert(123456);
-	bf.insert(123556);
-	bf.insert(4321);	
-	cout << bf.find(4321) << endl;
-	cout << bf.find(4322) << endl;
+void usage(string name) {
+    cout << endl << "Usage: " << name << " dictionary_file queries_file filter_size" << endl << endl;
+    exit(-1);
+}
+
+int main(int argc, char* argv[]) {
+	
+	int filterSize;
+	string dictFile, queriesFile;
+
+	if (argc < 4) usage(argv[0]);
+	
+	dictFile = argv[1];
+	queriesFile = argv[2];
+	filterSize = atoi(argv[3]);
+
+	BloomFilter bf(DIVISION_KNUTH, MULT_METHOD, filterSize);
+	
+	fstream dict(dictFile, ios_base::in);
+	unsigned int a;
+    while (dict >> a) bf.insert(a);
+    fstream query(queriesFile, ios_base::in);
+	while (query >> a) bf.find(a);
 	bf.printResults();
 }
