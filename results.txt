@@ -1,640 +1,556 @@
-execution 1: main dict/dict1 queries/query1 3 200000 10000000 0.6 200000
-Diccionari:	dict/dict1
+execution 1: main dicts/dict1 queries/query1 3 200000 10000000 0.6 200000
+Diccionari:	dicts/dict1
 Queries:	queries/query1
 
 ---- Binary Search Results ----
-find(k): comparisons between keys:	1
-find(k): average search time:	1.5651e-07
-find(k): total search time:	0.015651
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	100000
-setDictionary(v): sort comparisons:	0
+find(k): comparisons between keys:	19.0354
+find(k): average search time:	2.94827e-07
+find(k): total search time:	0.0294827
+find(k): number of successful queries:	49452
+find(k): number of unsuccessful queries:	50548
+setDictionary(v): sort comparisons:	1.76845e+07
 
    ** For found elements **
-find(k): average comparisons between keys:	-nan
+find(k): average comparisons between keys:	17.5211
 
    ** For not found elements **
-find(k): average comparisons between keys:	1
+find(k): average comparisons between keys:	20.5168
 
 
   ---- Bloom Filter Results ----
 
-find(k): average search time:	3.3954e-07
-find(k): total search time:	0.033954
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	100000
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-hash funcs: number of calls to hash functions:	200000
+find(k): average search time:	3.071e-07
+find(k): total search time:	0.03071
+find(k): number of successful queries:	52078
+find(k): number of unsuccessful queries:	47922
+insert(k): average insertion time:	3.04758e-07
+insert(k): total insertion time:	0.215265
+insert(k): number of elements:	706346
+hash funcs: number of calls to hash functions:	1.61269e+06
 
 
   ---- Hash Table Results ----
 
-find(k): average search time:	2.01127e-07
-find(k): total search time:	0.0201127
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	100000
-insert(k): average insertion time:	inf
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash:	100000
+find(k): average search time:	4.28098e-06
+find(k): total search time:	0.0283623
+find(k): number of successful queries:	49452
+find(k): number of unsuccessful queries:	50548
+insert(k): average insertion time:	6.06132e-07
+insert(k): total insertion time:	0.399736
+insert(k): number of elements:	706279
+rehash(): number of rehashes:	3
+rehash(): average time of each rehash:	0.0707261
+rehash(): average time between each rehash:	0.0719733
+		 : number of calls to hash:	3.19263e+06
 
 
   ---- Cuckoo Results ----
 
-find(k): average search time:	3.3416e-07
-find(k): total search time:	0.033416
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	100000
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): total number of bounces:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash1:	100000
-		 : number of calls to hash2:	100000
+find(k): average search time:	3.31887e-07
+find(k): total search time:	0.0331887
+find(k): number of successful queries:	49452
+find(k): number of unsuccessful queries:	50548
+insert(k): average insertion time:	1.40101e-06
+insert(k): total insertion time:	0.989503
+insert(k): total number of bounces:	6.95916e+06
+insert(k): number of elements:	706279
+rehash(): number of rehashes:	3
+rehash(): average time of each rehash:	0.0792294
+rehash(): average time between each rehash:	0.261668
+		 : number of calls to hash1:	6.62568e+06
+		 : number of calls to hash2:	5.59404e+06
 
   --- FI EXPERIMENT --- 
 
-execution 2: main dict/dict2 queries/query2 3 400000 20000000 0.6 400000
-Diccionari:	dict/dict2
+execution 2: main dicts/dict2 queries/query2 3 400000 20000000 0.6 400000
+Diccionari:	dicts/dict2
 Queries:	queries/query2
 
 ---- Binary Search Results ----
-find(k): comparisons between keys:	1
-find(k): average search time:	1.62677e-07
-find(k): total search time:	0.0145027
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	89150
-setDictionary(v): sort comparisons:	0
+find(k): comparisons between keys:	18.5908
+find(k): average search time:	2.93875e-07
+find(k): total search time:	0.026199
+find(k): number of successful queries:	44157
+find(k): number of unsuccessful queries:	44993
+setDictionary(v): sort comparisons:	1.35911e+07
 
    ** For found elements **
-find(k): average comparisons between keys:	-nan
+find(k): average comparisons between keys:	17.0745
 
    ** For not found elements **
-find(k): average comparisons between keys:	1
+find(k): average comparisons between keys:	20.0789
 
 
   ---- Bloom Filter Results ----
 
-find(k): average search time:	3.57484e-07
-find(k): total search time:	0.0318697
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	89150
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-hash funcs: number of calls to hash functions:	178300
+find(k): average search time:	3.13266e-07
+find(k): total search time:	0.0279277
+find(k): number of successful queries:	44860
+find(k): number of unsuccessful queries:	44290
+insert(k): average insertion time:	3.23963e-07
+insert(k): total insertion time:	0.176929
+insert(k): number of elements:	546140
+hash funcs: number of calls to hash functions:	1.27058e+06
 
 
   ---- Hash Table Results ----
 
-find(k): average search time:	2.17727e-07
-find(k): total search time:	0.0194103
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	89150
-insert(k): average insertion time:	inf
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash:	89150
+find(k): average search time:	4.22146e-06
+find(k): total search time:	0.025231
+find(k): number of successful queries:	44157
+find(k): number of unsuccessful queries:	44993
+insert(k): average insertion time:	6.89138e-07
+insert(k): total insertion time:	0.351112
+insert(k): number of elements:	546107
+rehash(): number of rehashes:	2
+rehash(): average time of each rehash:	0.102543
+rehash(): average time between each rehash:	0.0856287
+		 : number of calls to hash:	2.6214e+06
 
 
   ---- Cuckoo Results ----
 
-find(k): average search time:	3.78089e-07
-find(k): total search time:	0.0337067
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	89150
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): total number of bounces:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash1:	89150
-		 : number of calls to hash2:	89150
+find(k): average search time:	3.1284e-07
+find(k): total search time:	0.0278897
+find(k): number of successful queries:	44157
+find(k): number of unsuccessful queries:	44993
+insert(k): average insertion time:	7.56111e-07
+insert(k): total insertion time:	0.412918
+insert(k): total number of bounces:	2.34051e+06
+insert(k): number of elements:	546107
+rehash(): number of rehashes:	1
+rehash(): average time of each rehash:	0.0651727
+rehash(): average time between each rehash:	0.375635
+		 : number of calls to hash1:	2.72708e+06
+		 : number of calls to hash2:	2.25411e+06
 
   --- FI EXPERIMENT --- 
 
-execution 3: main dict/dict3 queries/query3 3 600000 30000000 0.6 600000
-Diccionari:	dict/dict3
+execution 3: main dicts/dict3 queries/query3 3 600000 30000000 0.6 600000
+Diccionari:	dicts/dict3
 Queries:	queries/query3
 
 ---- Binary Search Results ----
-find(k): comparisons between keys:	1
-find(k): average search time:	1.67567e-07
-find(k): total search time:	0.0101473
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	60557
-setDictionary(v): sort comparisons:	0
+find(k): comparisons between keys:	17.2484
+find(k): average search time:	2.64891e-07
+find(k): total search time:	0.016041
+find(k): number of successful queries:	29901
+find(k): number of unsuccessful queries:	30656
+setDictionary(v): sort comparisons:	4.43792e+06
 
    ** For found elements **
-find(k): average comparisons between keys:	-nan
+find(k): average comparisons between keys:	15.7287
 
    ** For not found elements **
-find(k): average comparisons between keys:	1
+find(k): average comparisons between keys:	18.7306
 
 
   ---- Bloom Filter Results ----
 
-find(k): average search time:	3.68595e-07
-find(k): total search time:	0.022321
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	60557
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-hash funcs: number of calls to hash functions:	121114
+find(k): average search time:	3.23827e-07
+find(k): total search time:	0.01961
+find(k): number of successful queries:	29936
+find(k): number of unsuccessful queries:	30621
+insert(k): average insertion time:	3.33626e-07
+insert(k): total insertion time:	0.0690533
+insert(k): number of elements:	206978
+hash funcs: number of calls to hash functions:	535070
 
 
   ---- Hash Table Results ----
 
-find(k): average search time:	2.1321e-07
-find(k): total search time:	0.0129113
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	60557
-insert(k): average insertion time:	inf
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
+find(k): average search time:	1.11773e-06
+find(k): total search time:	0.0160247
+find(k): number of successful queries:	29901
+find(k): number of unsuccessful queries:	30656
+insert(k): average insertion time:	3.27031e-07
+insert(k): total insertion time:	0.0516617
+insert(k): number of elements:	206972
 rehash(): number of rehashes:	0
 rehash(): average time of each rehash:	-nan
 rehash(): average time between each rehash:	inf
-		 : number of calls to hash:	60557
+		 : number of calls to hash:	474507
 
 
   ---- Cuckoo Results ----
 
-find(k): average search time:	3.63338e-07
-find(k): total search time:	0.0220027
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	60557
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): total number of bounces:	0
-insert(k): number of elements:	0
+find(k): average search time:	3.08552e-07
+find(k): total search time:	0.018685
+find(k): number of successful queries:	29901
+find(k): number of unsuccessful queries:	30656
+insert(k): average insertion time:	3.93862e-07
+insert(k): total insertion time:	0.0815183
+insert(k): total number of bounces:	64272
+insert(k): number of elements:	206972
 rehash(): number of rehashes:	0
 rehash(): average time of each rehash:	-nan
 rehash(): average time between each rehash:	inf
-		 : number of calls to hash1:	60557
-		 : number of calls to hash2:	60557
+		 : number of calls to hash1:	478043
+		 : number of calls to hash2:	306652
 
   --- FI EXPERIMENT --- 
 
-execution 4: main dict/dict4 queries/query4 3 800000 40000000 0.6 800000
-Diccionari:	dict/dict4
+execution 4: main dicts/dict4 queries/query4 3 800000 40000000 0.6 800000
+Diccionari:	dicts/dict4
 Queries:	queries/query4
 
 ---- Binary Search Results ----
-find(k): comparisons between keys:	1
-find(k): average search time:	1.47115e-07
-find(k): total search time:	0.58846
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	4e+06
-setDictionary(v): sort comparisons:	0
+find(k): comparisons between keys:	21.4648
+find(k): average search time:	3.96629e-07
+find(k): total search time:	1.58652
+find(k): number of successful queries:	1.98187e+06
+find(k): number of unsuccessful queries:	2.01813e+06
+setDictionary(v): sort comparisons:	1.2029e+08
 
    ** For found elements **
-find(k): average comparisons between keys:	-nan
+find(k): average comparisons between keys:	19.9507
 
    ** For not found elements **
-find(k): average comparisons between keys:	1
+find(k): average comparisons between keys:	22.9516
 
 
   ---- Bloom Filter Results ----
 
-find(k): average search time:	3.98109e-07
-find(k): total search time:	1.59243
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	4e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-hash funcs: number of calls to hash functions:	8e+06
-
-
-  ---- Hash Table Results ----
-
-find(k): average search time:	2.56391e-07
-find(k): total search time:	1.02556
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	4e+06
-insert(k): average insertion time:	inf
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash:	4e+06
-
-
-  ---- Cuckoo Results ----
-
-find(k): average search time:	4.2448e-07
-find(k): total search time:	1.69792
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	4e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): total number of bounces:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash1:	4e+06
-		 : number of calls to hash2:	4e+06
-
-  --- FI EXPERIMENT --- 
-
-execution 5: main dict/dict5 queries/query5 3 1000000 50000000 0.6 1000000
-Diccionari:	dict/dict5
-Queries:	queries/query5
-
----- Binary Search Results ----
-find(k): comparisons between keys:	1
-find(k): average search time:	1.70163e-07
-find(k): total search time:	0.850813
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	5e+06
-setDictionary(v): sort comparisons:	0
-
-   ** For found elements **
-find(k): average comparisons between keys:	-nan
-
-   ** For not found elements **
-find(k): average comparisons between keys:	1
-
-
-  ---- Bloom Filter Results ----
-
-find(k): average search time:	4.14564e-07
-find(k): total search time:	2.07282
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	5e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-hash funcs: number of calls to hash functions:	1e+07
-
-
-  ---- Hash Table Results ----
-
-find(k): average search time:	2.42462e-07
-find(k): total search time:	1.21231
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	5e+06
-insert(k): average insertion time:	inf
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash:	5e+06
-
-
-  ---- Cuckoo Results ----
-
-find(k): average search time:	4.35732e-07
-find(k): total search time:	2.17866
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	5e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): total number of bounces:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash1:	5e+06
-		 : number of calls to hash2:	5e+06
-
-  --- FI EXPERIMENT --- 
-
-execution 6: main dict/dict6 queries/query6 3 1200000 60000000 0.6 1200000
-Diccionari:	dict/dict6
-Queries:	queries/query6
-
----- Binary Search Results ----
-find(k): comparisons between keys:	1
-find(k): average search time:	1.48329e-07
-find(k): total search time:	0.889977
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	6e+06
-setDictionary(v): sort comparisons:	0
-
-   ** For found elements **
-find(k): average comparisons between keys:	-nan
-
-   ** For not found elements **
-find(k): average comparisons between keys:	1
-
-
-  ---- Bloom Filter Results ----
-
-find(k): average search time:	4.04689e-07
-find(k): total search time:	2.42813
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	6e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-hash funcs: number of calls to hash functions:	1.2e+07
-
-
-  ---- Hash Table Results ----
-
-find(k): average search time:	2.24137e-07
-find(k): total search time:	1.34482
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	6e+06
-insert(k): average insertion time:	inf
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash:	6e+06
-
-
-  ---- Cuckoo Results ----
-
-find(k): average search time:	4.24184e-07
-find(k): total search time:	2.5451
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	6e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): total number of bounces:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash1:	6e+06
-		 : number of calls to hash2:	6e+06
-
-  --- FI EXPERIMENT --- 
-
-execution 7: main dict/dict7 queries/query7 3 1400000 70000000 0.6 1400000
-Diccionari:	dict/dict7
-Queries:	queries/query7
-
----- Binary Search Results ----
-find(k): comparisons between keys:	1
-find(k): average search time:	1.53063e-07
-find(k): total search time:	1.07144
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	7e+06
-setDictionary(v): sort comparisons:	0
-
-   ** For found elements **
-find(k): average comparisons between keys:	-nan
-
-   ** For not found elements **
-find(k): average comparisons between keys:	1
-
-
-  ---- Bloom Filter Results ----
-
-find(k): average search time:	3.8929e-07
-find(k): total search time:	2.72503
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	7e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-hash funcs: number of calls to hash functions:	1.4e+07
-
-
-  ---- Hash Table Results ----
-
-find(k): average search time:	2.22699e-07
-find(k): total search time:	1.5589
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	7e+06
-insert(k): average insertion time:	inf
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash:	7e+06
-
-
-  ---- Cuckoo Results ----
-
-find(k): average search time:	4.11682e-07
-find(k): total search time:	2.88177
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	7e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): total number of bounces:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash1:	7e+06
-		 : number of calls to hash2:	7e+06
-
-  --- FI EXPERIMENT --- 
-
-execution 8: main dict/dict8 queries/query8 3 1600000 80000000 0.6 1600000
-Diccionari:	dict/dict8
-Queries:	queries/query8
-
----- Binary Search Results ----
-find(k): comparisons between keys:	1
-find(k): average search time:	1.52886e-07
-find(k): total search time:	1.22309
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	8e+06
-setDictionary(v): sort comparisons:	0
-
-   ** For found elements **
-find(k): average comparisons between keys:	-nan
-
-   ** For not found elements **
-find(k): average comparisons between keys:	1
-
-
-  ---- Bloom Filter Results ----
-
-find(k): average search time:	3.97869e-07
-find(k): total search time:	3.18295
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	8e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
+find(k): average search time:	3.45137e-07
+find(k): total search time:	1.38055
+find(k): number of successful queries:	2.29871e+06
+find(k): number of unsuccessful queries:	1.70129e+06
+insert(k): average insertion time:	3.43978e-07
+insert(k): total insertion time:	1.37591
+insert(k): number of elements:	4e+06
 hash funcs: number of calls to hash functions:	1.6e+07
 
 
   ---- Hash Table Results ----
 
-find(k): average search time:	2.24651e-07
-find(k): total search time:	1.79721
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	8e+06
-insert(k): average insertion time:	inf
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash:	8e+06
+find(k): average search time:	1.17736e-06
+find(k): total search time:	1.21982
+find(k): number of successful queries:	1.98187e+06
+find(k): number of unsuccessful queries:	2.01813e+06
+insert(k): average insertion time:	1.17789e-06
+insert(k): total insertion time:	3.48961
+insert(k): number of elements:	3.99817e+06
+rehash(): number of rehashes:	4
+rehash(): average time of each rehash:	0.574768
+rehash(): average time between each rehash:	0.602588
+		 : number of calls to hash:	2.63982e+07
 
 
   ---- Cuckoo Results ----
 
-find(k): average search time:	3.93677e-07
-find(k): total search time:	3.14942
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	8e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): total number of bounces:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash1:	8e+06
-		 : number of calls to hash2:	8e+06
+find(k): average search time:	3.61268e-07
+find(k): total search time:	1.44507
+find(k): number of successful queries:	1.98187e+06
+find(k): number of unsuccessful queries:	2.01813e+06
+insert(k): average insertion time:	1.83119e-06
+insert(k): total insertion time:	7.32142
+insert(k): total number of bounces:	5.52047e+07
+insert(k): number of elements:	3.99817e+06
+rehash(): number of rehashes:	4
+rehash(): average time of each rehash:	0.428158
+rehash(): average time between each rehash:	1.76346
+		 : number of calls to hash1:	5.04633e+07
+		 : number of calls to hash2:	4.21476e+07
 
   --- FI EXPERIMENT --- 
 
-execution 9: main dict/dict9 queries/query9 3 1800000 90000000 0.6 1800000
-Diccionari:	dict/dict9
-Queries:	queries/query9
+execution 5: main dicts/dict5 queries/query5 3 1000000 50000000 0.6 1000000
+Diccionari:	dicts/dict5
+Queries:	queries/query5
 
 ---- Binary Search Results ----
-find(k): comparisons between keys:	1
-find(k): average search time:	1.46102e-07
-find(k): total search time:	1.31492
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	9e+06
-setDictionary(v): sort comparisons:	0
+find(k): comparisons between keys:	21.8355
+find(k): average search time:	4.72634e-07
+find(k): total search time:	2.36317
+find(k): number of successful queries:	2.4777e+06
+find(k): number of unsuccessful queries:	2.5223e+06
+setDictionary(v): sort comparisons:	1.45456e+08
 
    ** For found elements **
-find(k): average comparisons between keys:	-nan
+find(k): average comparisons between keys:	20.3213
 
    ** For not found elements **
-find(k): average comparisons between keys:	1
+find(k): average comparisons between keys:	23.3228
 
 
   ---- Bloom Filter Results ----
 
-find(k): average search time:	3.85705e-07
-find(k): total search time:	3.47134
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	9e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-hash funcs: number of calls to hash functions:	1.8e+07
-
-
-  ---- Hash Table Results ----
-
-find(k): average search time:	2.22237e-07
-find(k): total search time:	2.00014
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	9e+06
-insert(k): average insertion time:	inf
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash:	9e+06
-
-
-  ---- Cuckoo Results ----
-
-find(k): average search time:	3.94008e-07
-find(k): total search time:	3.54607
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	9e+06
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): total number of bounces:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash1:	9e+06
-		 : number of calls to hash2:	9e+06
-
-  --- FI EXPERIMENT --- 
-
-execution 10: main dict/dict10 queries/query10 3 2000000 100000000 0.6 2000000
-Diccionari:	dict/dict10
-Queries:	queries/query10
-
----- Binary Search Results ----
-find(k): comparisons between keys:	1
-find(k): average search time:	1.51085e-07
-find(k): total search time:	1.51085
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	1e+07
-setDictionary(v): sort comparisons:	0
-
-   ** For found elements **
-find(k): average comparisons between keys:	-nan
-
-   ** For not found elements **
-find(k): average comparisons between keys:	1
-
-
-  ---- Bloom Filter Results ----
-
-find(k): average search time:	4.1325e-07
-find(k): total search time:	4.1325
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	1e+07
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
+find(k): average search time:	3.61611e-07
+find(k): total search time:	1.80805
+find(k): number of successful queries:	2.89058e+06
+find(k): number of unsuccessful queries:	2.10942e+06
+insert(k): average insertion time:	3.82413e-07
+insert(k): total insertion time:	1.91207
+insert(k): number of elements:	5e+06
 hash funcs: number of calls to hash functions:	2e+07
 
 
   ---- Hash Table Results ----
 
-find(k): average search time:	2.29427e-07
-find(k): total search time:	2.29427
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	1e+07
-insert(k): average insertion time:	inf
-insert(k): total insertion time:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash:	1e+07
+find(k): average search time:	1.21735e-06
+find(k): total search time:	1.57349
+find(k): number of successful queries:	2.4777e+06
+find(k): number of unsuccessful queries:	2.5223e+06
+insert(k): average insertion time:	1.21806e-06
+insert(k): total insertion time:	4.51324
+insert(k): number of elements:	4.99706e+06
+rehash(): number of rehashes:	4
+rehash(): average time of each rehash:	0.749617
+rehash(): average time between each rehash:	0.772065
+		 : number of calls to hash:	3.29971e+07
 
 
   ---- Cuckoo Results ----
 
-find(k): average search time:	4.13991e-07
-find(k): total search time:	4.13991
-find(k): number of successful queries:	0
-find(k): number of unsuccessful queries:	1e+07
-insert(k): average insertion time:	-nan
-insert(k): total insertion time:	0
-insert(k): total number of bounces:	0
-insert(k): number of elements:	0
-rehash(): number of rehashes:	0
-rehash(): average time of each rehash:	-nan
-rehash(): average time between each rehash:	inf
-		 : number of calls to hash1:	1e+07
-		 : number of calls to hash2:	1e+07
+find(k): average search time:	3.63674e-07
+find(k): total search time:	1.81837
+find(k): number of successful queries:	2.4777e+06
+find(k): number of unsuccessful queries:	2.5223e+06
+insert(k): average insertion time:	3.00651e-06
+insert(k): total insertion time:	15.0237
+insert(k): total number of bounces:	1.33578e+08
+insert(k): number of elements:	4.99706e+06
+rehash(): number of rehashes:	5
+rehash(): average time of each rehash:	0.667336
+rehash(): average time between each rehash:	2.70108
+		 : number of calls to hash1:	1.03588e+08
+		 : number of calls to hash2:	8.89934e+07
 
   --- FI EXPERIMENT --- 
 
+execution 6: main dicts/dict6 queries/query6 3 1200000 60000000 0.6 1200000
+Diccionari:	dicts/dict6
+Queries:	queries/query6
+
+---- Binary Search Results ----
+find(k): comparisons between keys:	22.1137
+find(k): average search time:	4.90665e-07
+find(k): total search time:	2.94399
+find(k): number of successful queries:	2.97454e+06
+find(k): number of unsuccessful queries:	3.02546e+06
+setDictionary(v): sort comparisons:	1.73677e+08
+
+   ** For found elements **
+find(k): average comparisons between keys:	20.6004
+
+   ** For not found elements **
+find(k): average comparisons between keys:	23.6016
+
+
+  ---- Bloom Filter Results ----
+
+find(k): average search time:	3.59423e-07
+find(k): total search time:	2.15654
+find(k): number of successful queries:	3.48127e+06
+find(k): number of unsuccessful queries:	2.51873e+06
+insert(k): average insertion time:	3.67251e-07
+insert(k): total insertion time:	2.20351
+insert(k): number of elements:	6e+06
+hash funcs: number of calls to hash functions:	2.4e+07
+
+
+  ---- Hash Table Results ----
+
+find(k): average search time:	1.2277e-06
+find(k): total search time:	1.90459
+find(k): number of successful queries:	2.97454e+06
+find(k): number of unsuccessful queries:	3.02546e+06
+insert(k): average insertion time:	1.22854e-06
+insert(k): total insertion time:	5.4616
+insert(k): number of elements:	5.99589e+06
+rehash(): number of rehashes:	4
+rehash(): average time of each rehash:	0.907317
+rehash(): average time between each rehash:	0.934231
+		 : number of calls to hash:	3.95959e+07
+
+
+  ---- Cuckoo Results ----
+
+find(k): average search time:	3.54938e-07
+find(k): total search time:	2.12963
+find(k): number of successful queries:	2.97454e+06
+find(k): number of unsuccessful queries:	3.02546e+06
+insert(k): average insertion time:	2.91058e-06
+insert(k): total insertion time:	17.4515
+insert(k): total number of bounces:	1.59082e+08
+insert(k): number of elements:	5.99589e+06
+rehash(): number of rehashes:	5
+rehash(): average time of each rehash:	0.703754
+rehash(): average time between each rehash:	3.21247
+		 : number of calls to hash1:	1.21782e+08
+		 : number of calls to hash2:	1.04798e+08
+
+  --- FI EXPERIMENT --- 
+
+execution 7: main dicts/dict7 queries/query7 3 1400000 70000000 0.6 1400000
+Diccionari:	dicts/dict7
+Queries:	queries/query7
+
+---- Binary Search Results ----
+find(k): comparisons between keys:	22.3127
+find(k): average search time:	4.26653e-07
+find(k): total search time:	2.98657
+find(k): number of successful queries:	3.47174e+06
+find(k): number of unsuccessful queries:	3.52826e+06
+setDictionary(v): sort comparisons:	1.99676e+08
+
+   ** For found elements **
+find(k): average comparisons between keys:	20.7994
+
+   ** For not found elements **
+find(k): average comparisons between keys:	23.8018
+
+
+  ---- Bloom Filter Results ----
+
+find(k): average search time:	3.68899e-07
+find(k): total search time:	2.5823
+find(k): number of successful queries:	4.07339e+06
+find(k): number of unsuccessful queries:	2.92661e+06
+insert(k): average insertion time:	3.63246e-07
+insert(k): total insertion time:	2.54272
+insert(k): number of elements:	7e+06
+hash funcs: number of calls to hash functions:	2.8e+07
+
+
+  ---- Hash Table Results ----
+
+find(k): average search time:	1.16463e-06
+find(k): total search time:	2.13757
+find(k): number of successful queries:	3.47174e+06
+find(k): number of unsuccessful queries:	3.52826e+06
+insert(k): average insertion time:	1.16559e-06
+insert(k): total insertion time:	6.01486
+insert(k): number of elements:	6.99425e+06
+rehash(): number of rehashes:	4
+rehash(): average time of each rehash:	1.00226
+rehash(): average time between each rehash:	1.03585
+		 : number of calls to hash:	4.61943e+07
+
+
+  ---- Cuckoo Results ----
+
+find(k): average search time:	3.27467e-07
+find(k): total search time:	2.29227
+find(k): number of successful queries:	3.47174e+06
+find(k): number of unsuccessful queries:	3.52826e+06
+insert(k): average insertion time:	2.75298e-06
+insert(k): total insertion time:	19.255
+insert(k): total number of bounces:	1.84641e+08
+insert(k): number of elements:	6.99425e+06
+rehash(): number of rehashes:	5
+rehash(): average time of each rehash:	0.733935
+rehash(): average time between each rehash:	3.57553
+		 : number of calls to hash1:	1.39807e+08
+		 : number of calls to hash2:	1.20509e+08
+
+  --- FI EXPERIMENT --- 
+
+execution 8: main dicts/dict8 queries/query8 3 1600000 80000000 0.6 1600000
+Diccionari:	dicts/dict8
+Queries:	queries/query8
+
+---- Binary Search Results ----
+find(k): comparisons between keys:	22.4621
+find(k): average search time:	4.35187e-07
+find(k): total search time:	3.4815
+find(k): number of successful queries:	3.96906e+06
+find(k): number of unsuccessful queries:	4.03094e+06
+setDictionary(v): sort comparisons:	2.44329e+08
+
+   ** For found elements **
+find(k): average comparisons between keys:	20.9495
+
+   ** For not found elements **
+find(k): average comparisons between keys:	23.9515
+
+
+  ---- Bloom Filter Results ----
+
+find(k): average search time:	3.95686e-07
+find(k): total search time:	3.16549
+find(k): number of successful queries:	4.66246e+06
+find(k): number of unsuccessful queries:	3.33754e+06
+insert(k): average insertion time:	3.86428e-07
+insert(k): total insertion time:	3.09143
+insert(k): number of elements:	8e+06
+hash funcs: number of calls to hash functions:	3.2e+07
+
+
+  ---- Hash Table Results ----
+
+find(k): average search time:	1.2109e-06
+find(k): total search time:	2.55549
+find(k): number of successful queries:	3.96906e+06
+find(k): number of unsuccessful queries:	4.03094e+06
+insert(k): average insertion time:	1.21202e-06
+insert(k): total insertion time:	7.13169
+insert(k): number of elements:	7.99258e+06
+rehash(): number of rehashes:	4
+rehash(): average time of each rehash:	1.19723
+rehash(): average time between each rehash:	1.22457
+		 : number of calls to hash:	5.27926e+07
+
+
+  ---- Cuckoo Results ----
+
+find(k): average search time:	3.49415e-07
+find(k): total search time:	2.79532
+find(k): number of successful queries:	3.96906e+06
+find(k): number of unsuccessful queries:	4.03094e+06
+insert(k): average insertion time:	2.84105e-06
+insert(k): total insertion time:	22.7073
+insert(k): total number of bounces:	2.10751e+08
+insert(k): number of elements:	7.99258e+06
+rehash(): number of rehashes:	5
+rehash(): average time of each rehash:	0.826812
+rehash(): average time between each rehash:	4.27372
+		 : number of calls to hash1:	1.58139e+08
+		 : number of calls to hash2:	1.36529e+08
+
+  --- FI EXPERIMENT --- 
+
+execution 9: main dicts/dict9 queries/query9 3 1800000 90000000 0.6 1800000
+Diccionari:	dicts/dict9
+Queries:	queries/query9
+
+---- Binary Search Results ----
+find(k): comparisons between keys:	22.6455
+find(k): average search time:	4.728e-07
+find(k): total search time:	4.2552
+find(k): number of successful queries:	4.46621e+06
+find(k): number of unsuccessful queries:	4.53379e+06
+setDictionary(v): sort comparisons:	2.69192e+08
+
+   ** For found elements **
+find(k): average comparisons between keys:	21.1327
+
+   ** For not found elements **
+find(k): average comparisons between keys:	24.1358
+
+
+  ---- Bloom Filter Results ----
+
+find(k): average search time:	4.37106e-07
+find(k): total search time:	3.93395
+find(k): number of successful queries:	5.25134e+06
+find(k): number of unsuccessful queries:	3.74866e+06
+insert(k): average insertion time:	4.12982e-07
+insert(k): total insertion time:	3.71684
+insert(k): number of elements:	9e+06
+hash funcs: number of calls to hash functions:	3.6e+07
+
+
+  ---- Hash Table Results ----
+
+find(k): average search time:	1.60236e-06
+find(k): total search time:	3.75623
+find(k): number of successful queries:	4.46621e+06
+find(k): number of unsuccessful queries:	4.53379e+06
+insert(k): average insertion time:	1.60402e-06
+insert(k): total insertion time:	10.665
+insert(k): number of elements:	8.99074e+06
+rehash(): number of rehashes:	4
+rehash(): average time of each rehash:	1.83905
+rehash(): average time between each rehash:	1.76627
+		 : number of calls to hash:	5.93907e+07
