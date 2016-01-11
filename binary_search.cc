@@ -2,7 +2,6 @@
 #include <vector>
 #include <algorithm>
 #include <ctime>
-#include <fstream>
 using namespace std;
 
 class BinarySearch {
@@ -13,16 +12,6 @@ private:
 
 	// Number of comparisons of keys during the latest call to binarySearch(k)
 	int numKeyComparisons;
-	int numSortComparisons;
-
-	int numFoundElements;
-	int numNotFoundElements;
-		
-	int numKeyCompFoundElements;
-	int numSortCompFoundElements;
-	int numKeyCompNotFoundElements;
-	int numSortCompNotFoundElements;
-	double timeTotal;
 
 	void quicksort(vector<unsigned int>& v) {
 		quicksort(v, 0, v.size() - 1);	
@@ -76,16 +65,20 @@ private:
 		if (found) {
 			++numFoundElements;
 			numKeyCompFoundElements  += numKeyComparisons;
-			numSortCompFoundElements += numSortComparisons;
 		}
 		else {
 			++numNotFoundElements;
 			numKeyCompNotFoundElements  += numKeyComparisons;
-			numSortCompNotFoundElements += numSortComparisons;	
 		}
 	}
 
 public:
+	int numSortComparisons;
+	int numFoundElements;
+	int numNotFoundElements;
+	int numKeyCompFoundElements;
+	int numKeyCompNotFoundElements;
+	double timeTotal;
 
 	BinarySearch() {
 		this->numKeyComparisons  = 0;
@@ -95,13 +88,11 @@ public:
 		this->numNotFoundElements	= 0;
 		
 		this->numKeyCompFoundElements		= 0;
-		this->numSortCompFoundElements		= 0;
 		this->numKeyCompNotFoundElements	= 0;
-		this->numSortCompNotFoundElements	= 0;
 		this->timeTotal = 0.0;
 	}
 
-	void setDictionary(vector<unsigned int>& v) {
+	void setDictionary(vector<unsigned int> v) {
 		//sort(v.begin(), v.end());	// implement quick sort/radix sort?
 		numSortComparisons = 0;
 		quicksort(v);
@@ -138,26 +129,15 @@ public:
 	
 };
 
-int main(int argc, char* argv[]) {
-	string dict_file, query_file;
-	if (argc != 3) {
-		cout << "Usage: dict_file, query_file" << endl;
-		return 0;
-	} else {
-		dict_file = argv[1];
-		query_file = argv[2];
-	}
+int hi() {
 	BinarySearch bs;
-	vector<unsigned int> v;
-	fstream dict(dict_file, ios_base::in);
-    unsigned int a;
-    while (dict >> a) {
-    	v.push_back(a);
-	}
+	// vector<unsigned int> v = {5,7,10,12,15,20};
+	vector<unsigned int> v = {7,5,20,12,10,15};
 	bs.setDictionary(v);
-	fstream query(query_file, ios_base::in);
-	while (query >> a) {
-		bs.find(a);
-	}
+	cout << bs.find(5) << ", " << bs.getNumKeyComparisons() << " comparisons" << endl;
+	cout << bs.find(12) << ", " << bs.getNumKeyComparisons() << " comparisons" << endl;
+	cout << bs.find(13) << ", " << bs.getNumKeyComparisons() << " comparisons" << endl;
+	cout << bs.find(20) << ", " << bs.getNumKeyComparisons() << " comparisons" << endl;
+
 	bs.printResults();
 }

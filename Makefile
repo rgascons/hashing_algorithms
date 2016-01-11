@@ -3,8 +3,12 @@ BLOOM=bloom
 BINARY=binary_search
 CUCKOO=cuckoo
 TRIE=trie
+MAIN=main
 
-all: hash bloom cuckoo trie binary
+all: main
+
+main:
+	g++ -o $(MAIN) main.cc -std=c++11
 
 hash:
 	g++ -o $(HASH) hash_table.cc -std=c++11
