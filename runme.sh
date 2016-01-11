@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir -p dicts
 mkdir -p queries
-for i in {1..3}
+for i in {1..8}
 do
 	echo "generating dict$i with $((10#$i * 1000000)) elements"
     python rand.py "dicts/dict$i" "$((10#$i * 1000000))"
