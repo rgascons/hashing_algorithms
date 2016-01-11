@@ -309,6 +309,9 @@ int main(int argc, char* argv[]) {
 
 	cout << "Diccionari:\t" + dictFile 	 << endl;
 	cout << "Queries:\t" + queriesFile << endl;
+
+	cerr << "Diccionari:\t" + dictFile 	 << endl;
+	cerr << "Queries:\t" + queriesFile << endl;
 	
 	cerr << endl << "binary search ..." << endl;
 	binarySearch(dictFile, queriesFile, nRep);
