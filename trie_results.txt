@@ -1,117 +1,117 @@
 execution 1: main dicts/dict1 queries/query1 3 200000 10000000 0.6 200000
-Diccionari:	
-Queries:	
+Diccionari:	dicts/dict1
+Queries:	queries/query1
 
   --- FI EXPERIMENT --- 
 
-find(k): average search time:	5.51257e-06
-find(k): total search time:	0.061008
+find(k): average search time:	5.91053e-06
+find(k): total search time:	0.064291
 find(k): number of successful queries:	49452
 find(k): number of unsuccessful queries:	50548
-insert(k): average insertion time:	7.80748e-07
-insert(k): total insertion time:	0.490249
+insert(k): average insertion time:	8.37111e-07
+insert(k): total insertion time:	0.526762
 insert(k): number of elements:	706063
 execution 2: main dicts/dict2 queries/query2 3 400000 20000000 0.6 400000
-Diccionari:	
-Queries:	
+Diccionari:	dicts/dict2
+Queries:	queries/query2
 
   --- FI EXPERIMENT --- 
 
-find(k): average search time:	4.90424e-06
-find(k): total search time:	0.052106
+find(k): average search time:	5.17218e-06
+find(k): total search time:	0.062712
 find(k): number of successful queries:	44157
 find(k): number of unsuccessful queries:	44993
-insert(k): average insertion time:	8.00764e-07
-insert(k): total insertion time:	0.385107
+insert(k): average insertion time:	8.44513e-07
+insert(k): total insertion time:	0.398388
 insert(k): number of elements:	545995
 execution 3: main dicts/dict3 queries/query3 3 600000 30000000 0.6 600000
-Diccionari:	
-Queries:	
+Diccionari:	dicts/dict3
+Queries:	queries/query3
 
   --- FI EXPERIMENT --- 
 
-find(k): average search time:	2.97118e-06
-find(k): total search time:	0.033942
+find(k): average search time:	3.35519e-06
+find(k): total search time:	0.042309
 find(k): number of successful queries:	29901
 find(k): number of unsuccessful queries:	30656
-insert(k): average insertion time:	8.69401e-07
-insert(k): total insertion time:	0.145984
+insert(k): average insertion time:	9.81764e-07
+insert(k): total insertion time:	0.160871
 insert(k): number of elements:	206954
 execution 4: main dicts/dict4 queries/query4 3 800000 40000000 0.6 800000
-Diccionari:	
-Queries:	
+Diccionari:	dicts/dict4
+Queries:	queries/query4
 
   --- FI EXPERIMENT --- 
 
-find(k): average search time:	1.48191e-06
-find(k): total search time:	2.84696
+find(k): average search time:	1.72099e-06
+find(k): total search time:	3.50443
 find(k): number of successful queries:	1981868
 find(k): number of unsuccessful queries:	2018132
-insert(k): average insertion time:	1.48452e-06
-insert(k): total insertion time:	3.08066
+insert(k): average insertion time:	1.72403e-06
+insert(k): total insertion time:	3.37954
 insert(k): number of elements:	3992952
 execution 5: main dicts/dict5 queries/query5 3 1000000 50000000 0.6 1000000
-Diccionari:	
-Queries:	
+Diccionari:	dicts/dict5
+Queries:	queries/query5
 
   --- FI EXPERIMENT --- 
 
-find(k): average search time:	1.73649e-06
-find(k): total search time:	4.29353
+find(k): average search time:	1.83503e-06
+find(k): total search time:	4.30088
 find(k): number of successful queries:	2477703
 find(k): number of unsuccessful queries:	2522297
-insert(k): average insertion time:	1.74023e-06
-insert(k): total insertion time:	4.38894
+insert(k): average insertion time:	1.83897e-06
+insert(k): total insertion time:	4.87425
 insert(k): number of elements:	4989264
 execution 6: main dicts/dict6 queries/query6 3 1200000 60000000 0.6 1200000
-Diccionari:	
-Queries:	
+Diccionari:	dicts/dict6
+Queries:	queries/query6
 
   --- FI EXPERIMENT --- 
 
-find(k): average search time:	1.70531e-06
-find(k): total search time:	5.04412
+find(k): average search time:	1.78398e-06
+find(k): total search time:	5.05913
 find(k): number of successful queries:	2974535
 find(k): number of unsuccessful queries:	3025465
-insert(k): average insertion time:	1.70957e-06
-insert(k): total insertion time:	5.18776
+insert(k): average insertion time:	1.78843e-06
+insert(k): total insertion time:	5.64474
 insert(k): number of elements:	5985065
 execution 7: main dicts/dict7 queries/query7 3 1400000 70000000 0.6 1400000
-Diccionari:	
-Queries:	
+Diccionari:	dicts/dict7
+Queries:	queries/query7
 
   --- FI EXPERIMENT --- 
 
-find(k): average search time:	1.58609e-06
-find(k): total search time:	5.37284
+find(k): average search time:	1.84195e-06
+find(k): total search time:	5.88262
 find(k): number of successful queries:	3471740
 find(k): number of unsuccessful queries:	3528260
-insert(k): average insertion time:	1.59063e-06
-insert(k): total insertion time:	5.72976
+insert(k): average insertion time:	1.84722e-06
+insert(k): total insertion time:	7.01103
 insert(k): number of elements:	6980013
 execution 8: main dicts/dict8 queries/query8 3 1600000 80000000 0.6 1600000
-Diccionari:	
-Queries:	
+Diccionari:	dicts/dict8
+Queries:	queries/query8
 
   --- FI EXPERIMENT --- 
 
-find(k): average search time:	1.54025e-06
-find(k): total search time:	5.97692
+find(k): average search time:	1.8646e-06
+find(k): total search time:	7.21488
 find(k): number of successful queries:	3969055
 find(k): number of unsuccessful queries:	4030945
-insert(k): average insertion time:	1.54525e-06
-insert(k): total insertion time:	6.34507
+insert(k): average insertion time:	1.87065e-06
+insert(k): total insertion time:	7.70193
 insert(k): number of elements:	7974118
 execution 9: main dicts/dict9 queries/query9 3 1800000 90000000 0.6 1800000
-Diccionari:	
-Queries:	
+Diccionari:	dicts/dict9
+Queries:	queries/query9
 
   --- FI EXPERIMENT --- 
 
-find(k): average search time:	1.5361e-06
-find(k): total search time:	6.7407
+find(k): average search time:	1.92515e-06
+find(k): total search time:	8.28313
 find(k): number of successful queries:	4466214
 find(k): number of unsuccessful queries:	4533786
-insert(k): average insertion time:	1.54161e-06
-insert(k): total insertion time:	7.08424
+insert(k): average insertion time:	1.93205e-06
+insert(k): total insertion time:	9.04325
 insert(k): number of elements:	8967873
