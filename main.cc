@@ -5,55 +5,55 @@
 #include "hash_table.cc"
 #include "bloom.cc"
 #include "cuckoo.cc"
-#include "trie.cc"
+//#include "trie.cc"
 using namespace std;
 
-void trie(string dictFile, string queriesFile, int nRep) {
+// void trie(string dictFile, string queriesFile, int nRep) {
 
-	double _elements 				= 0;
-	double timeInsert 				= 0;
-	double timeFind					= 0;
-	double timeTotal 				= 0;
-	double numFoundElements 		= 0;
-	double numNotFoundElements 		= 0;
+// 	double _elements 				= 0;
+// 	double timeInsert 				= 0;
+// 	double timeFind					= 0;
+// 	double timeTotal 				= 0;
+// 	double numFoundElements 		= 0;
+// 	double numNotFoundElements 		= 0;
 
-	for (int i = 0; i < nRep; ++i) {	
-		fstream dict(dictFile, ios_base::in);
-		fstream queries(queriesFile, ios_base::in);
+// 	for (int i = 0; i < nRep; ++i) {	
+// 		fstream dict(dictFile, ios_base::in);
+// 		fstream queries(queriesFile, ios_base::in);
 
-		Trie t;
-	    unsigned int a;
-	    while (dict >> a) {
-	    	t.insert(a);
-		}
-		while (queries >> a) {
-			t.find(a);
-		}
+// 		Trie t;
+// 	    unsigned int a;
+// 	    while (dict >> a) {
+// 	    	t.insert(a);
+// 		}
+// 		while (queries >> a) {
+// 			t.find(a);
+// 		}
 
-		timeInsert += t.timeInsert;
-		timeFind  += t.timeFind;
-		timeTotal += t.timeTotal;
-		numFoundElements += t.numFoundElements;
-		numNotFoundElements += t.numNotFoundElements;
-		_elements  += t._elements;
-	}
+// 		timeInsert += t.timeInsert;
+// 		timeFind  += t.timeFind;
+// 		timeTotal += t.timeTotal;
+// 		numFoundElements += t.numFoundElements;
+// 		numNotFoundElements += t.numNotFoundElements;
+// 		_elements  += t._elements;
+// 	}
 
-	timeTotal /= nRep;
-	timeInsert /= nRep;
-	timeFind  /= nRep;
-	numFoundElements /= nRep;
-	numNotFoundElements /= nRep;
-	_elements  /= nRep;
+// 	timeTotal /= nRep;
+// 	timeInsert /= nRep;
+// 	timeFind  /= nRep;
+// 	numFoundElements /= nRep;
+// 	numNotFoundElements /= nRep;
+// 	_elements  /= nRep;
 	
-	cout << endl << endl << "  ---- Trie Results ----" << endl << endl;
-	cout << "find(k): average search time:\t" <<  double(timeTotal)/(numFoundElements+numNotFoundElements) << endl;
-	cout << "find(k): total search time:\t" <<  timeFind << endl;
-	cout << "find(k): number of successful queries:\t" << numFoundElements << endl;
-	cout << "find(k): number of unsuccessful queries:\t" << numNotFoundElements << endl;
-	cout << "insert(k): average insertion time:\t" << double(timeTotal)/(_elements) << endl;
-	cout << "insert(k): total insertion time:\t" <<  timeInsert << endl;
-	cout << "insert(k): number of elements:\t" << _elements << endl;
-}
+// 	cout << endl << endl << "  ---- Trie Results ----" << endl << endl;
+// 	cout << "find(k): average search time:\t" <<  double(timeTotal)/(numFoundElements+numNotFoundElements) << endl;
+// 	cout << "find(k): total search time:\t" <<  timeFind << endl;
+// 	cout << "find(k): number of successful queries:\t" << numFoundElements << endl;
+// 	cout << "find(k): number of unsuccessful queries:\t" << numNotFoundElements << endl;
+// 	cout << "insert(k): average insertion time:\t" << double(timeTotal)/(_elements) << endl;
+// 	cout << "insert(k): total insertion time:\t" <<  timeInsert << endl;
+// 	cout << "insert(k): number of elements:\t" << _elements << endl;
+// }
 
 
 void cuckoo(string dictFile, string queriesFile, int nRep, int m) {

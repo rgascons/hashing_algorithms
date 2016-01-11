@@ -56,7 +56,7 @@ public:
 	}
 
 	void printResults() {
-		cout << endl << endl;
+		cout << endl << "  --- FI EXPERIMENT --- " << endl << endl;
 		cout << "find(k): average search time:\t" <<  double(timeTotal)/(numFoundElements+numNotFoundElements) << endl;
 		cout << "find(k): total search time:\t" <<  timeFind << endl;
 		cout << "find(k): number of successful queries:\t" << numFoundElements << endl;
@@ -104,8 +104,12 @@ private:
 	}
 };
 
-int q(int argc, char* argv[]) {
+int main(int argc, char* argv[]) {
 	string dict_file, query_file;
+
+	cout << "Diccionari:\t" + dict_file 	 << endl;
+	cout << "Queries:\t" + query_file << endl;
+
 	if (argc != 3) {
 		cout << "Usage: dict_file, query_file" << endl;
 		return 0;
