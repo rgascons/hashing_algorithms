@@ -5,7 +5,7 @@ CUCKOO=cuckoo
 TRIE=trie
 MAIN=main
 
-all: main
+all: main trie
 
 main:
 	g++ -o $(MAIN) main.cc -std=c++11 -O3
