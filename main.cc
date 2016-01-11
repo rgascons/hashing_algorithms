@@ -306,6 +306,9 @@ int main(int argc, char* argv[]) {
 	int bloomFilterSize = atoi(argv[5]);
 	double maxLoadFactor= double(atof(argv[6]));
 	int cuckooSize 		= atoi(argv[7]);
+
+	cout << "Diccionari:\t" + dictFile 	 << endl;
+	cout << "Queries:\t" + queriesFile << endl;
 	
 	cerr << endl << "binary search ..." << endl;
 	binarySearch(dictFile, queriesFile, nRep);
@@ -319,6 +322,8 @@ int main(int argc, char* argv[]) {
 	cerr << endl << "cuckoo ..." << endl;
 	cuckoo(dictFile, queriesFile, nRep, hashTableSize);
 
-	cerr << endl << "cuckoo ..." << endl;
-	trie(dictFile, queriesFile, nRep);
+	//cerr << endl << "trie ..." << endl;
+	//trie(dictFile, queriesFile, nRep);
+
+	cout << endl << "  --- FI EXPERIMENT --- " << endl << endl;
 }

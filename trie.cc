@@ -104,7 +104,7 @@ private:
 	}
 };
 
-int t(int argc, char* argv[]) {
+int q(int argc, char* argv[]) {
 	string dict_file, query_file;
 	if (argc != 3) {
 		cout << "Usage: dict_file, query_file" << endl;
