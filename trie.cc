@@ -17,6 +17,16 @@ struct Node {
 
 class Trie {
 public:
+
+	int _elements;
+
+	int numFoundElements;
+	int numNotFoundElements;
+
+	double timeTotal;
+	double timeInsert;
+	double timeFind;
+
 	Trie() {
 		head = new Node();
 		_elements = 0;
@@ -58,15 +68,7 @@ public:
 
 private:
 	Node *head;
-	int _elements;
-
-	int numFoundElements;
-	int numNotFoundElements;
-
-	double timeTotal;
-	double timeInsert;
-	double timeFind;
-
+	
 	void insert_trie(unsigned int k) {
 		string word = to_string(k);
 		Node *current = head;
@@ -102,7 +104,7 @@ private:
 	}
 };
 
-int main(int argc, char* argv[]) {
+int t(int argc, char* argv[]) {
 	string dict_file, query_file;
 	if (argc != 3) {
 		cout << "Usage: dict_file, query_file" << endl;

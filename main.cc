@@ -3,10 +3,58 @@
 #include <cstdlib>
 #include "binary_search.cc"
 #include "hash_table.cc"
-# include "bloom.cc"
-// #include "cuckoo.cc"
-// #include "trie.cc"
+#include "bloom.cc"
+#include "cuckoo.cc"
+#include "trie.cc"
 using namespace std;
+
+void trie(string dictFile, string queriesFile, int nRep) {
+
+	double _elements 				= 0;
+	double timeInsert 				= 0;
+	double timeFind					= 0;
+	double timeTotal 				= 0;
+	double numFoundElements 		= 0;
+	double numNotFoundElements 		= 0;
+
+	for (int i = 0; i < nRep; ++i) {	
+		fstream dict(dictFile, ios_base::in);
+		fstream queries(queriesFile, ios_base::in);
+
+		Trie t;
+	    unsigned int a;
+	    while (dict >> a) {
+	    	t.insert(a);
+		}
+		while (queries >> a) {
+			t.find(a);
+		}
+
+		timeInsert += t.timeInsert;
+		timeFind  += t.timeFind;
+		timeTotal += t.timeTotal;
+		numFoundElements += t.numFoundElements;
+		numNotFoundElements += t.numNotFoundElements;
+		_elements  += t._elements;
+	}
+
+	timeTotal /= nRep;
+	timeInsert /= nRep;
+	timeFind  /= nRep;
+	numFoundElements /= nRep;
+	numNotFoundElements /= nRep;
+	_elements  /= nRep;
+	
+	cout << endl << endl << "  ---- Trie Results ----" << endl << endl;
+	cout << "find(k): average search time:\t" <<  double(timeTotal)/(numFoundElements+numNotFoundElements) << endl;
+	cout << "find(k): total search time:\t" <<  timeFind << endl;
+	cout << "find(k): number of successful queries:\t" << numFoundElements << endl;
+	cout << "find(k): number of unsuccessful queries:\t" << numNotFoundElements << endl;
+	cout << "insert(k): average insertion time:\t" << double(timeTotal)/(_elements) << endl;
+	cout << "insert(k): total insertion time:\t" <<  timeInsert << endl;
+	cout << "insert(k): number of elements:\t" << _elements << endl;
+}
+
 
 void cuckoo(string dictFile, string queriesFile, int nRep, int m) {
 
@@ -59,7 +107,7 @@ void cuckoo(string dictFile, string queriesFile, int nRep, int m) {
 	rehashTime /= nRep;
 	numCallsHashFunction1 /= nRep;
 	numCallsHashFunction2 /= nRep;
-	numBounces += c.numBounces;
+	numBounces /= nRep;
 	
 	cout << endl << endl << "  ---- Cuckoo Results ----" << endl << endl;
 	cout << "find(k): average search time:\t" <<  double(timeFind)/(numFoundElements+numNotFoundElements) << endl;
@@ -237,31 +285,40 @@ void binarySearch(string dictFile, string queriesFile, int nRep) {
 }
 
 void usage(string name) {
-    cout << endl << "Usage: " << name << " dict_file queries_file n_rep hashtable_size bloomfilter_size max_loadFactor" << endl << endl;
+    cout << endl << "Usage: " << name << " dict_file queries_file n_rep hashtable_size bloomfilter_size max_loadFactor cuckoo_size" << endl << endl;
     cout << "  - dict_file: fitxer amb el conjunt de paraules a inserir a cada conjunt" << endl;
     cout << "  - queries_file: fitxer amb el conjunt de paraules a cercar al conjunt" << endl;
     cout << "  - n_rep: nombre de vegades que es repeteix cada execucio (com a resultats s'imprimeix la mitjana de les n_rep execucions)" << endl;
     cout << "  - hashtable_size: mida de la taula de hash (nombre de caselles)" << endl;
     cout << "  - bloomfilter_size: mida del filtre de bloom (nombre de caselles)" << endl;
     cout << "  - max_loadFactor: factor de carrega a partir del qual es fara rehash de la taula de hash" << endl;
+    cout << "  - cuckoo_size: size of each table of cuckoo hashing structure" << endl;
     exit(-1);
 }
 
 int main(int argc, char* argv[]) {
-	if (argc < 7) usage(argv[0]);
+	if (argc < 8) usage(argv[0]);
 
 	string dictFile 	= argv[1];
 	string queriesFile 	= argv[2];
 	int nRep 			= atoi(argv[3]);
 	int hashTableSize 	= atoi(argv[4]);
 	int bloomFilterSize = atoi(argv[5]);
-	double maxLoadFactor= double(atoi(argv[6]));
+	double maxLoadFactor= double(atof(argv[6]));
+	int cuckooSize 		= atoi(argv[7]);
+	
 	cerr << endl << "binary search ..." << endl;
 	binarySearch(dictFile, queriesFile, nRep);
+	
 	cerr << endl << "filtre de bloom ..." << endl;
 	bloomFilter(dictFile, queriesFile, nRep, bloomFilterSize);
+	
 	cerr << endl << "taula de hash ..." << endl;
 	hashTable(dictFile, queriesFile, nRep, hashTableSize, maxLoadFactor);
-	cerr << endl << "taula de hash ..." << endl;
-	cuckoo(dictFile, queriesFile, nRep, hashTableSize, maxLoadFactor);
+	
+	cerr << endl << "cuckoo ..." << endl;
+	cuckoo(dictFile, queriesFile, nRep, hashTableSize);
+
+	cerr << endl << "cuckoo ..." << endl;
+	trie(dictFile, queriesFile, nRep);
 }

@@ -4,11 +4,25 @@
 #include <ctime>
 #include <fstream>
 #include <cstdlib>
-#include "hash_functions.cc"
 using namespace std;
 
 class CuckooHash {
 public:
+
+	int _elements;
+	int numFoundElements;
+	int numNotFoundElements;
+	int numRehash;
+	int numBounces;
+	int numCallsHashFunction1;
+	int numCallsHashFunction2;
+
+	double timeTotal;
+	double timeInsert;
+	double timeFind;
+	double rehashTime;
+
+
 	CuckooHash(unsigned int m, int f1, int f2) {
 		m1 = m2 = m;
 		max_loop = m*2;
@@ -94,25 +108,12 @@ public:
 private:
 	int m1;
 	int m2;
-	int _elements;
 	int max_loop;
 	int method1;
 	int method2;
 
 	vector<unsigned int> table1;
 	vector<unsigned int> table2;
-
-	int numFoundElements;
-	int numNotFoundElements;
-	int numRehash;
-	int numBounces;
-	int numCallsHashFunction1;
-	int numCallsHashFunction2;
-
-	double timeTotal;
-	double timeInsert;
-	double timeFind;
-	double rehashTime;
 
 	void finish(bool found) {
 		if (found) {
@@ -164,7 +165,7 @@ private:
 
 };
 
-int main(int argc, char* argv[]) {
+int c(int argc, char* argv[]) {
 	int table_size;
 	string dict_file, query_file;
 	if (argc != 4) {
