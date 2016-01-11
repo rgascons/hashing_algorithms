@@ -8,22 +8,22 @@ MAIN=main
 all: main
 
 main:
-	g++ -o $(MAIN) main.cc -std=c++11
+	g++ -o $(MAIN) main.cc -std=c++11 -O3
 
 hash:
-	g++ -o $(HASH) hash_table.cc -std=c++11
+	g++ -o $(HASH) hash_table.cc -std=c++11 -O3
 
 bloom:
-	g++ -o $(BLOOM) bloom.cc -std=c++11
+	g++ -o $(BLOOM) bloom.cc -std=c++11 -O3
 
 cuckoo:
-	g++ -o $(CUCKOO) cuckoo.cc -std=c++11
+	g++ -o $(CUCKOO) cuckoo.cc -std=c++11 -O3
 
 trie:
-	g++ -o $(TRIE) trie.cc -std=c++11
+	g++ -o $(TRIE) trie.cc -std=c++11 -O3
 
 binary:
-	g++ -o $(BINARY) binary_search.cc -std=c++11
+	g++ -o $(BINARY) binary_search.cc -std=c++11 -O3
 
 clean:
 	rm -f $(HASH)
@@ -31,4 +31,5 @@ clean:
 	rm -f $(BINARY)
 	rm -f $(CUCKOO)
 	rm -f $(TRIE)
+	rm -f $(MAIN)
 	rm -f *.o
