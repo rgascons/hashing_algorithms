@@ -27,6 +27,11 @@ public:
 		timeTotal = 0.0;
 	}
 
+	~Trie() {
+		destroy(head);
+	}
+
+
 	bool find(unsigned int k) {
 		double t1 = clock();
 		bool f = find_trie(k);
@@ -66,6 +71,15 @@ private:
 	double timeTotal;
 	double timeInsert;
 	double timeFind;
+	
+	void destroy(Node *p) {
+		for (int i = 0; i < DIGITS_SIZE; ++i) {
+			if (p->child[i] != NULL) {
+				destroy(p->child[i]);
+			}
+		}
+		free(p);
+	}
 
 	void insert_trie(unsigned int k) {
 		string word = to_string(k);
