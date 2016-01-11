@@ -11,6 +11,21 @@ using namespace std;
 class HashTable {
 public:
 
+	int _m;
+	int _elements;
+	int method;
+	double _max_load;
+	
+	int numFoundElements;
+	int numNotFoundElements;
+	int numRehash;
+	int numCallsHashFunction;
+
+	double timeTotal;
+	double timeInsert;
+	double timeFind;
+	double rehashTime;
+
 	// m -> mida *inicial* de la taula de hash
 	HashTable(unsigned int m, double max_load, int f) {
 		_m = m;
@@ -84,22 +99,9 @@ public:
 		cout << "		 : number of calls to hash:\t" << numCallsHashFunction << endl;
 	}
 
+
 private:
-	int _m;
-	int _elements;
-	int method;
-	double _max_load;
 	vector<list<unsigned int> > table;
-
-	int numFoundElements;
-	int numNotFoundElements;
-	int numRehash;
-	int numCallsHashFunction;
-
-	double timeTotal;
-	double timeInsert;
-	double timeFind;
-	double rehashTime;
 
 	bool find_hash(unsigned int k) {
 		int hash = h(method, k, _m); ++numCallsHashFunction;
@@ -136,7 +138,7 @@ private:
 	}
 };
 
-int main(int argc, char* argv[]) {
+int b(int argc, char* argv[]) {
 	int table_size;
 	float load_factor;
 	string dict_file, query_file;

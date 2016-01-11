@@ -2,11 +2,72 @@
 #include <fstream>
 #include <cstdlib>
 #include "binary_search.cc"
-// #include "hash_table.cc"
+#include "hash_table.cc"
 # include "bloom.cc"
 // #include "cuckoo.cc"
 // #include "trie.cc"
 using namespace std;
+
+void hashTable(string dictFile, string queriesFile, int nRep, int m, double maxLoadFactor) {
+
+	double timeTotal 				= 0;
+	double numFoundElements 		= 0;
+	double numNotFoundElements 		= 0;
+	double _elements 				= 0;
+	double timeFind					= 0;
+	double timeInsert 				= 0;
+	double numRehash 				= 0;
+	double rehashTime 				= 0;
+	double numCallsHashFunction 	= 0;
+
+	for (int i = 0; i < nRep; ++i) {	
+		fstream dict(dictFile, ios_base::in);
+		fstream queries(queriesFile, ios_base::in);
+
+		HashTable ht(m, maxLoadFactor, DIVISION_METHOD);
+	    unsigned int a;
+	    while (dict >> a) {
+	    	ht.insert(a);
+		}
+		while (queries >> a) {
+			ht.find(a);
+		}
+
+		timeTotal += ht.timeTotal;
+		timeFind  += ht.timeFind;
+		numFoundElements += ht.numFoundElements;
+		numNotFoundElements += ht.numNotFoundElements;
+		_elements  += ht._elements;
+		timeInsert += ht.timeInsert;
+		numRehash  += ht.numRehash;
+		rehashTime += ht.rehashTime;
+		numCallsHashFunction += ht.numCallsHashFunction;
+
+	}
+
+	timeTotal /= nRep;
+	timeFind  /= nRep;
+	numFoundElements /= nRep;
+	numNotFoundElements /= nRep;
+	_elements  /= nRep;
+	timeInsert /= nRep;
+	numRehash  /= nRep;
+	rehashTime /= nRep;
+	numCallsHashFunction /= nRep;
+	
+	cout << endl << endl;
+	cout << "find(k): average search time:\t" <<  double(timeTotal)/(numFoundElements+numNotFoundElements) << endl;
+	cout << "find(k): total search time:\t" <<  timeFind << endl;
+	cout << "find(k): number of successful queries:\t" << numFoundElements << endl;
+	cout << "find(k): number of unsuccessful queries:\t" << numNotFoundElements << endl;
+	cout << "insert(k): average insertion time:\t" << double(timeTotal)/(_elements) << endl;
+	cout << "insert(k): total insertion time:\t" <<  timeInsert << endl;
+	cout << "insert(k): number of elements:\t" << _elements << endl;
+	cout << "rehash(): number of rehashes:\t" << numRehash << endl;
+	cout << "rehash(): average time of each rehash:\t" << double(rehashTime)/(numRehash) << endl;
+	cout << "rehash(): average time between each rehash:\t" << double(timeTotal-rehashTime)/(numRehash) << endl;
+	cout << "		 : number of calls to hash:\t" << numCallsHashFunction << endl;
+}
 
 void bloomFilter(string dictFile, string queriesFile, int nRep, int m) {
 	
@@ -107,21 +168,26 @@ void binarySearch(string dictFile, string queriesFile, int nRep) {
 }
 
 void usage(string name) {
-    cout << endl << "Usage: " << name << " dict_file queries_file n_rep bloomfilter_size" << endl << endl;
+    cout << endl << "Usage: " << name << " dict_file queries_file n_rep hashtable_size bloomfilter_size max_loadFactor" << endl << endl;
     cout << "  - dict_file: fitxer amb el conjunt de paraules a inserir a cada conjunt" << endl;
     cout << "  - queries_file: fitxer amb el conjunt de paraules a cercar al conjunt" << endl;
     cout << "  - n_rep: nombre de vegades que es repeteix cada execucio (com a resultats s'imprimeix la mitjana de les n_rep execucions)" << endl;
+    cout << "  - hashtable_size: mida de la taula de hash (nombre de caselles)" << endl;
     cout << "  - bloomfilter_size: mida del filtre de bloom (nombre de caselles)" << endl;
+    cout << "  - max_loadFactor: factor de carrega a partir del qual es fara rehash de la taula de hash" << endl;
     exit(-1);
 }
 
 int main(int argc, char* argv[]) {
-	if (argc < 5) usage(argv[0]);
+	if (argc < 6) usage(argv[0]);
 
-	string dictFile = argv[1];
-	string queriesFile = argv[2];
-	int nRep = atoi(argv[3]);
-	int bloomFilterSize = atoi(argv[4]);
+	string dictFile 	= argv[1];
+	string queriesFile 	= argv[2];
+	int nRep 			= atoi(argv[3]);
+	int hashTableSize 	= atoi(argv[4]);
+	int bloomFilterSize = atoi(argv[5]);
+	double maxLoadFactor= double(atoi(argv[6]));
 	binarySearch(dictFile, queriesFile, nRep);
 	bloomFilter(dictFile, queriesFile, nRep, bloomFilterSize);
+	//hashTable(dictFile, queriesFile, nRep, hashTableSize, maxLoadFactor);
 }

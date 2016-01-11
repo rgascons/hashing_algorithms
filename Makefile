@@ -26,6 +26,7 @@ binary:
 	g++ -o $(BINARY) binary_search.cc -std=c++11 -O3
 
 clean:
+	rm -f main
 	rm -f $(HASH)
 	rm -f $(BLOOM)
 	rm -f $(BINARY)
