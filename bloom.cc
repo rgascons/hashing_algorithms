@@ -3,7 +3,6 @@
 #include <ctime>
 #include <fstream>
 #include <cstdlib>
-#include "hash_functions.cc"
 using namespace std;
 
 class BloomFilter {
@@ -81,7 +80,7 @@ void usageBF(string name) {
     exit(-1);
 }
 
-int hi(int argc, char* argv[]) {
+int a(int argc, char* argv[]) {
 	
 	int filterSize;
 	string dictFile, queriesFile;

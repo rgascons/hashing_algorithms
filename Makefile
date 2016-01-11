@@ -8,7 +8,7 @@ MAIN=main
 all: main
 
 main:
-	g++ -o $(MAIN) main.cc -std=c++11
+	g++ -o main main.cc -std=c++11
 
 hash:
 	g++ -o $(HASH) hash_table.cc -std=c++11
@@ -26,6 +26,7 @@ binary:
 	g++ -o $(BINARY) binary_search.cc -std=c++11
 
 clean:
+	rm -f main
 	rm -f $(HASH)
 	rm -f $(BLOOM)
 	rm -f $(BINARY)
