@@ -8,14 +8,13 @@ using namespace std;
 
 class BloomFilter {
 
-// Atenció:
-// Therefore, to maintain a fixed false positive probability, 
-// the length of the Bloom table must grow linearly with n.
 private:
 	
 	int method1;
 	int method2;
 
+public:
+	
 	int numCallsH1H2;
 	int numFoundElements;
 	int numNotFoundElements;
@@ -24,8 +23,6 @@ private:
 	double timeInsert;
 	int nElements;
 
-public:
-	
 	BloomFilter(int f1, int f2, const int m) {
 		T = vector<bool>(m, false);
 		method1 = f1;
@@ -47,8 +44,8 @@ public:
 		double t2 = (clock() - t1)/double(CLOCKS_PER_SEC);
 		timeFind += t2;
 		if (found) ++numFoundElements;
-		if (b1 != b2) ++numAlmostFoundElements;
 		else ++numNotFoundElements;
+		if (b1 != b2) ++numAlmostFoundElements;
 		return found;
 	}
 
@@ -56,8 +53,8 @@ public:
 		numCallsH1H2 += 2;
 		++nElements;
 		double t1 = clock();
-		T[h(method1, k, T.size())];
-		T[h(method2, k, T.size())];
+		T[h(method1, k, T.size())] = true;
+		T[h(method2, k, T.size())] = true;
 		double t2 = (clock() - t1)/double(CLOCKS_PER_SEC);
 		timeInsert += t2;
 	}
@@ -79,17 +76,17 @@ private:
 	vector<bool> T;
 };
 
-void usage(string name) {
+void usageBF(string name) {
     cout << endl << "Usage: " << name << " dictionary_file queries_file filter_size" << endl << endl;
     exit(-1);
 }
 
-int main(int argc, char* argv[]) {
+int hi(int argc, char* argv[]) {
 	
 	int filterSize;
 	string dictFile, queriesFile;
 
-	if (argc < 4) usage(argv[0]);
+	if (argc < 4) usageBF(argv[0]);
 	
 	dictFile = argv[1];
 	queriesFile = argv[2];
