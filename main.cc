@@ -8,6 +8,75 @@
 // #include "trie.cc"
 using namespace std;
 
+void cuckoo(string dictFile, string queriesFile, int nRep, int m) {
+
+	double timeTotal 				= 0;
+	double numFoundElements 		= 0;
+	double numNotFoundElements 		= 0;
+	double _elements 				= 0;
+	double timeFind					= 0;
+	double timeInsert 				= 0;
+	double numRehash 				= 0;
+	double rehashTime 				= 0;
+	double numCallsHashFunction1 	= 0;
+	double numCallsHashFunction2 	= 0;
+	double numBounces			 	= 0;
+
+	for (int i = 0; i < nRep; ++i) {	
+		fstream dict(dictFile, ios_base::in);
+		fstream queries(queriesFile, ios_base::in);
+
+		CuckooHash c(m, DIVISION_KNUTH, MULT_METHOD);
+	    unsigned int a;
+	    while (dict >> a) {
+	    	c.insert(a);
+		}
+		while (queries >> a) {
+			c.find(a);
+		}
+
+		timeTotal += c.timeTotal;
+		timeFind  += c.timeFind;
+		numFoundElements += c.numFoundElements;
+		numNotFoundElements += c.numNotFoundElements;
+		_elements  += c._elements;
+		timeInsert += c.timeInsert;
+		numRehash  += c.numRehash;
+		rehashTime += c.rehashTime;
+		numCallsHashFunction1 += c.numCallsHashFunction1;
+		numCallsHashFunction2 += c.numCallsHashFunction2;
+		numBounces += c.numBounces;
+
+	}
+
+	timeTotal /= nRep;
+	timeFind  /= nRep;
+	numFoundElements /= nRep;
+	numNotFoundElements /= nRep;
+	_elements  /= nRep;
+	timeInsert /= nRep;
+	numRehash  /= nRep;
+	rehashTime /= nRep;
+	numCallsHashFunction1 /= nRep;
+	numCallsHashFunction2 /= nRep;
+	numBounces += c.numBounces;
+	
+	cout << endl << endl << "  ---- Cuckoo Results ----" << endl << endl;
+	cout << "find(k): average search time:\t" <<  double(timeFind)/(numFoundElements+numNotFoundElements) << endl;
+	cout << "find(k): total search time:\t" <<  timeFind << endl;
+	cout << "find(k): number of successful queries:\t" << numFoundElements << endl;
+	cout << "find(k): number of unsuccessful queries:\t" << numNotFoundElements << endl;
+	cout << "insert(k): average insertion time:\t" << double(timeInsert)/(_elements) << endl;
+	cout << "insert(k): total insertion time:\t" <<  timeInsert << endl;
+	cout << "insert(k): total number of bounces:\t" << numBounces << endl;
+	cout << "insert(k): number of elements:\t" << _elements << endl;
+	cout << "rehash(): number of rehashes:\t" << numRehash << endl;
+	cout << "rehash(): average time of each rehash:\t" << double(rehashTime)/(numRehash) << endl;
+	cout << "rehash(): average time between each rehash:\t" << double(timeTotal-rehashTime)/(numRehash) << endl;
+	cout << "		 : number of calls to hash1:\t" << numCallsHashFunction1 << endl;
+	cout << "		 : number of calls to hash2:\t" << numCallsHashFunction2 << endl;
+}
+
 void hashTable(string dictFile, string queriesFile, int nRep, int m, double maxLoadFactor) {
 
 	double timeTotal 				= 0;
@@ -55,7 +124,7 @@ void hashTable(string dictFile, string queriesFile, int nRep, int m, double maxL
 	rehashTime /= nRep;
 	numCallsHashFunction /= nRep;
 	
-	cout << endl << endl;
+	cout << endl << endl << "  ---- Hash Table Results ----" << endl << endl;
 	cout << "find(k): average search time:\t" <<  double(timeTotal)/(numFoundElements+numNotFoundElements) << endl;
 	cout << "find(k): total search time:\t" <<  timeFind << endl;
 	cout << "find(k): number of successful queries:\t" << numFoundElements << endl;
@@ -106,7 +175,7 @@ void bloomFilter(string dictFile, string queriesFile, int nRep, int m) {
 	timeInsert /= double(nRep);
 	nElements /= double(nRep);
 
-	cout << endl << endl << "  ---- Bloom Filter ----" << endl << endl;
+	cout << endl << endl << "  ---- Bloom Filter Results ----" << endl << endl;
 	cout << "find(k): average search time:\t" <<  double(timeFind)/(numFoundElements+numNotFoundElements) << endl;
 	cout << "find(k): total search time:\t" <<  timeFind << endl;
 	cout << "find(k): number of successful queries:\t" << numFoundElements << endl;
@@ -152,7 +221,7 @@ void binarySearch(string dictFile, string queriesFile, int nRep) {
 	numKeyCompNotFoundElements /= (double) nRep;
 	timeTotal /= double(nRep);
 
-	cout << endl << "---- Binary Search ----" << endl;
+	cout << endl << "---- Binary Search Results ----" << endl;
 	cout << "find(k): comparisons between keys:\t" <<  double(numKeyCompFoundElements+numKeyCompNotFoundElements)/(numFoundElements+numNotFoundElements) << endl;
 	cout << "find(k): average search time:\t" <<  double(timeTotal)/(numFoundElements+numNotFoundElements) << endl;
 	cout << "find(k): total search time:\t" <<  timeTotal << endl;
@@ -179,7 +248,7 @@ void usage(string name) {
 }
 
 int main(int argc, char* argv[]) {
-	if (argc < 6) usage(argv[0]);
+	if (argc < 7) usage(argv[0]);
 
 	string dictFile 	= argv[1];
 	string queriesFile 	= argv[2];
@@ -187,7 +256,12 @@ int main(int argc, char* argv[]) {
 	int hashTableSize 	= atoi(argv[4]);
 	int bloomFilterSize = atoi(argv[5]);
 	double maxLoadFactor= double(atoi(argv[6]));
+	cerr << endl << "binary search ..." << endl;
 	binarySearch(dictFile, queriesFile, nRep);
+	cerr << endl << "filtre de bloom ..." << endl;
 	bloomFilter(dictFile, queriesFile, nRep, bloomFilterSize);
-	//hashTable(dictFile, queriesFile, nRep, hashTableSize, maxLoadFactor);
+	cerr << endl << "taula de hash ..." << endl;
+	hashTable(dictFile, queriesFile, nRep, hashTableSize, maxLoadFactor);
+	cerr << endl << "taula de hash ..." << endl;
+	cuckoo(dictFile, queriesFile, nRep, hashTableSize, maxLoadFactor);
 }
